@@ -1,0 +1,269 @@
+
+{% extends 'pbase.html' %}
+{% block title %}Outdoor{% endblock title %}
+{% block body %}
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<style>
+    
+    .proclinic-bg.main {
+        display: none;
+    }
+
+    a.navbar-brand.arrow_style span {
+        color: #ffffff;
+        background: black;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px 0;
+        text-align: center;
+    }
+</style><nav id="sidebar" class="proclinic-bg">
+
+    
+<script>
+    function myFunction(e) {
+        var elems = document.querySelectorAll(".active");
+        [].forEach.call(elems, function(el) {
+            el.classList.remove("active");
+        });
+        e.target.class = "active";
+    }
+</script>
+
+        <div id="content">
+
+<!-- Required datatable js -->
+
+
+
+  
+
+ 
+      <br>
+      <a class ="btn btn-sm btn-success" href="/ehp"> if u are already registered click here</a><br>
+      
+      <br>
+    <div class="container-fluid">
+
+
+                <div class="row">
+                    <!-- Widget Item -->
+                    <div class="col-md-12">
+                        <div class="widget-area-2 proclinic-box-shadow">
+                                                 
+<form action="" class="form-horizontal form-material mb-0" id="patient_form" method="post" enctype="multipart/form-data">
+                              
+                            <div class="form-group row"> 
+                                <div class="form-group col-md-2">
+                                    <label for="patient_type">Patient Type<i class="text-danger"> * </i></label>
+                                    <input type="text" placeholder="Patient Type" class="form-control" id="patient_type" name="patient_type" readonly>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="patient_id">Patient ID<i class="text-danger"> * </i></label>
+                                    <input type="text" placeholder="Patient ID" class="form-control" id="patient_id" name="patient_id" readonly>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="date"><strong>Registration Date </strong></label>
+                                    <input type="date" class="form-control" id="patient_date" name="patient_date" >
+                                  </div>
+                               
+                            </div>   
+                                <div class="form-row">
+                                    <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                    <input type="hidden" name="request_user_id" value="1">
+                                    <input type="hidden" name="content" value="patient">
+                                    <input type="hidden" name="patient_status" value="active">
+                                  
+                                    <div class="form-group col-md-2">
+                                        <label for="patient-name">Patient Name<i class="text-danger"> * </i></label>
+                                        <input type="text" class="form-control patient_date" placeholder="Patient name" id="patient_name" name="patient_name" required>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="gender">Gender<i class="text-danger"> * </i></label>
+                                        <select class="form-control" id="patient_gender" name="patient_gender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-1">
+                                        <label for="age">Age <i class="text-danger"> * </i></label>
+                                        <input type="text" placeholder="Age" class="form-control" id="patient_age" name="patient_age" required>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="padding: 20px;">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="phone">Phone<i class="text-danger"> * </i></label>
+                                                    <input type="text" placeholder="Phone" onchange="phoneOnChange(this.value)" class="form-control" id="patient_phone" name="patient_phone">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="email" class="form-control" id="patient_email" name="patient_email">
+                                                </div>
+                                            
+                                
+                                                <div class="form-group col-md-4">
+                                                    <label for="patient_dob">Date of Birth<i class="text-danger"> * </i></label>
+                                                    <input type="date" placeholder="National ID" class="form-control" id="patient_dob" name="patient_dob">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="gender">Blood Group<i class="text-danger"> * </i></label>
+                                                    <select class="form-control" id="patient_blood_group" name="patient_blood_group">
+                                                        <option value="">Select Blood Group</option>
+                                                        <option value="A+">A+</option>
+                                                        <option value="B+">B+</option>
+                                                        <option value="O+">O+</option>
+                                                        <option value="AB+">AB+</option>
+                                                        <option value="A-">A-</option>
+                                                        <option value="B-">B-</option>
+                                                        <option value="O-">O-</option>
+                                                        <option value="AB-">AB-</option>
+                                                        <option value="not tested">Not Tested</option>
+                                                    </select>
+                                                </div> 
+                                                <div class="form-group col-md-4">
+                                                    <label for="patient_national_ID">National ID<i class="text-danger"> * </i></label>
+                                                    <input type="text" placeholder="National ID" class="form-control" id="patient_national_ID" name="patient_national_ID">
+                                                </div>
+                                             
+                                            
+                                                <div class="form-group col-md-12">
+                                                    <label for="exampleFormControlTextarea1">Address<i class="text-danger"> * </i></label>
+                                                    <textarea placeholder="Address" class="form-control" id="patient_address" name="patient_address" rows="3"></textarea>
+                                                </div>
+                                              
+                                                
+                                               
+                                            </div>
+                                        </div>
+                                       <div class="col-md-6" style="background-color: #f9f5f5;padding: 20px;border-radius: 10px;">
+                                            <div class="container-fluid">
+
+                                                <div class="row">
+                                                    <!-- Widget Item -->
+                                                    <div class="col-md-12">
+                                                        <div class="widget-area-2 proclinic-box-shadow">
+                                                             <h3 class="widget-title">Emmergency Contact</h3>
+                                                           
+                                                                <div class="form-row">
+                                                                    <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                                                    <input type="hidden" name="request_user_id" value="1">
+                                                                    <input type="hidden" name="content" value="outdoor_service">                               
+                                                                 
+                                                                </div>
+                                
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="patient-patient_emergency_name">Name<i class="text-danger"> * </i></label>
+                                                                    <input type="text" class="form-control" placeholder=" name" id="patient_emergency_name" name="patient_emergency_name" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="patient_emergency_relation">Relation<i class="text-danger"> * </i></label>
+                                                                    <input type="text" class="form-control" placeholder="relation with patient" id="patient_emergency_relation" name="patient_emergency_relation" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="patient_emergency_contact">Contact<i class="text-danger"> * </i></label>
+                                                                    <input type="text" class="form-control" placeholder="phone" id="patient_emergency_contact" name="patient_emergency_contact" required>
+                                                                </div>
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="exampleFormControlTextarea1">Address<i class="text-danger"> * </i></label>
+                                                                    <textarea placeholder="Address" class="form-control" id="patient_emergency_address" name="patient_emergency_address" rows="3"></textarea>
+                                                                </div>
+                                                                   
+                                                                      
+                                                                    
+                                                                   
+                                                                </div>
+                                                                   
+                                                            </div>
+                                                        
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        <div>  
+                                    </div>
+                                </div>
+                                        
+                                    
+
+
+                                    <div class="form-group col-md-6 mb-3">
+                                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+
+
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            <div id="loader"></div>
+                        </div>
+                    </div>
+                    <!-- /Widget Item -->
+                </div>
+              
+        
+
+<script>
+    document.getElementById("patient_type").value = "HomePatient";
+  </script>
+
+ 
+
+
+ 
+<script>
+    let currentDate = new Date();
+    {% comment %} currentDate.getDay()+"" {% endcomment %}
+    let time ="HP"+currentDate.getFullYear()+"" +currentDate.getHours() + "" + currentDate.getMinutes() + "" + currentDate.getSeconds()+""+currentDate.getMilliseconds();
+    console.log(time);
+    console.log(currentDate)
+    document.getElementById('patient_id').value = time;
+</script>
+<script>
+  function validateForm() {
+    var patient_emergency_name = document.getElementById("patient_emergency_name").value;
+    if (patient_emergency_name == "") {
+      document.getElementById("nameError").innerHTML = "Name is required";
+      return false;
+    }
+    return true;
+  }
+</script>
+
+{% comment %} <script>
+    function restrictBackdate() {
+      var selectedDate = new Date(document.getElementById("patient_date").value);
+      var today = new Date();
+      if (selectedDate.getTime() < today.getTime()) {
+          alert("You can't select a date in the past!");
+          document.getElementById("patient_date").value = "";
+      }
+    }
+  </script>   {% endcomment %}
+<script>
+    var today = new Date();
+document.getElementById("patient_date").min = today.toISOString().split("T")[0];
+</script>  
+
+
+
+{% endblock body %}
+

@@ -1,0 +1,152 @@
+{% extends 'pbase.html' %}
+{% block title %}aboutpage{% endblock title %}
+{% block body %}
+
+<h1 {text-align: center;}></h1>
+<head>
+    <style>
+    h1 {text-align: center;}
+    h4 {text-align: left, margin: 30px 0;}
+    p {text-align: left;}
+    div {text-align: left;}
+    h5{text-align: left;}
+    h3 {text-align: center;}
+    </style>
+</head>
+<body>
+    
+    <h1><br><br>Patient Admission <br></h1>
+     
+     
+        
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <!------ Include the above in your HEAD tag ---------->
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-18">
+                        <div class="card">
+                            <div class="card-body p-1">
+                                <h3><div class="row p-0">
+                                  
+           
+                                    <div class="col-md-6 text-right">
+                                        <p class="font-weight-bold mb-1">Patient Type:{{ IndoorAdmission.indoor_treatment_patient_type }}</p>
+                                        {% comment %} <p class="text-muted"><b>Patient ID :</b>{{ IndoorAdmission.indoor_treatment_patient_id }}</p> {% endcomment %}
+                                    </div>
+                                </div> </h3>
+            
+                                <hr class="my-5">
+            
+                                <div class="row pb-5 p-2">
+                                    <div class="col-md-6">
+                                        <h5>
+                                        <p class="font-weight-bold mb-3">Personal Information Details</p>
+                                        <p class="mb-1"><b>Patient Name:</b>{{ IndoorAdmission.patient_name }}</p>
+                                        <p class="mb-1"><b>Contact:</b>{{ IndoorAdmission.patient_phone }}</p>
+                    
+                                        <p class="mb-1"><b>Gender:</b>{{ IndoorAdmission.patient_gender }}</p>
+                                        <p class="mb-1"><b>Age:</b>{{ IndoorAdmission.patient_age }}</p></h5>
+                                    </div>
+            
+                                    <div class="col-md-6 text-right">
+                                        <p class="font-weight-bold mb-2"> Admission Details</p>
+                                        <p class="mb-1"><span class="text-muted"><b>Admission Date:</b>{{ IndoorAdmission.indoor_patient_bed_entry_time }}</p>
+                                        <p class="mb-1"><span class="text-muted"><b>Admit Up to date:</b>{{ IndoorAdmission.indoor_patient_bed_discharge_time }}</p>
+                                        <p class="mb-1"><span class="text-muted"><b>Accomodation Type:</b>{{ IndoorAdmission.indoor_patient_bed_bed_id }}</p>
+                                        
+                                        <p class="mb-1"><span class="text-muted"><b>Department:</b>{{ IndoorAdmission.indoor_patient_doctor_doctor_id }}</p>
+                                            <p class="mb-1"><span class="text-muted"><b>Admission Type:</b>{{ IndoorAdmission.outdoor_service_id }}</p>
+                                     
+                                    </div>
+                                </div>
+                              
+                                <div class="row p-0">
+                                    <div class="col-md-12">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="border-0 text-uppercase small font-weight-bold">N/A</th>
+                                                    <th class="border-0 text-uppercase small font-weight-bold">Segment</th>
+                                                    <th class="border-0 text-uppercase small font-weight-bold">Bill</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Admission fee</td>
+                                                    <td>{{ IndoorAdmission.outdoor_service_rate }}</td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Accomodation Cost</td>
+                                                    <td> {{ IndoorAdmission.bed_total_bill }}</td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Doctor fee</td>
+                                                    <td>{{ IndoorAdmission.doctor_total_bill }}</td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>Total</td>
+                                                    <td></td>
+                                                    <td>{{ IndoorAdmission.indoor_treatment_total_bill }}</td>
+                                                    
+                                                </tr>
+                                                {% comment %} <tr>
+                                                    <td>Discount</td>
+                                                    <td></td>
+                                                    <td>{{ IndoorAdmission.indoor_treatment_discount_pc }} </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>Bills After Discount</td>
+                                                    <td></td>
+                                                    <td>{{ IndoorAdmission.indoor_treatment_total_bill_after_discount }}   </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>Paid</td>
+                                                    <td></td>
+                                                    <td>{{ IndoorAdmission.indoor_treatment_total_paid }}</td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>Due</td>
+                                                    <td></td>
+                                                    <td>{{ IndoorAdmission.indoor_treatment_total_due }}</td>
+                                                    
+                                                </tr> {% endcomment %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+            
+                                <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+                                    <br><button onclick="window.print()">Print</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://totoprayogo.com">totoprayogo.com</a></div>
+            
+            </div>
+            
+            
+            
+
+
+</body>
+
+
+{% endblock body %}
+
+

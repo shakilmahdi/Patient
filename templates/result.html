@@ -1,0 +1,203 @@
+{% extends 'abase.html' %}
+{% block title %}result{% endblock title %}
+{% block body %}
+
+{% block content %}
+        <br>
+        <div class="row">
+            <div class="col-md">
+                <div class="card card0body">
+                <center> <h1>Patient Details</h1></center>
+                </div>
+               <br>Admitted Patient 
+                <div class="card card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Patient Type</th>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Contact</th>
+                            
+                            
+                        </tr>
+                        {% for vai in IndoorAdmission %}
+                        <tr>
+                            <td>{{vai.indoor_treatment_patient_id}}</td>
+                            <td>{{vai.indoor_treatment_patient_id}}</td>
+                            <td>{{vai.patient_name}}</td>
+                            <td>{{vai.patient_age}}</td>
+                            <td>{{vai.patient_gender}}</td>
+                            <td>{{vai.patient_phone}}</td>
+                            
+                            <td><a class ="btn btn-sm btn-info" href="update_indoor/{{ vai.id }}">Update</a></td>
+                            <td><a class ="btn btn-sm btn-danger" href="delete_indoor/{{ vai.id }}">delete</a></td>
+                                    
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <br>Home Patient
+                <div class="card card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Patient Type</th>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Contact</th>
+                      
+                        </tr>
+                        {% for vai in  HomePatient %}
+                        <tr>
+                            <td>{{vai.patient_type}}</td>
+                            <td>{{vai.patient_id}}</td>
+                            <td>{{vai.patient_name}}</td>
+                            <td>{{vai.patient_age}}</td>
+                            <td>{{vai.patient_gender}}</td>
+                            <td>{{vai.patient_phone}}</td>
+                            <th><a class ="btn btn-sm btn-info"href="">Edit</th>
+                            <th><a class ="btn btn-sm btn-danger"href="">Delete</th>
+                           
+                           
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <div class="card card-body">
+                
+                    <table class="table">
+                        <tr>
+    
+                            <th>OutDoor Patient (Name)</th>
+                            <th>Contact</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Doctor</th>
+                            <th>Date</th>
+                            
+                            
+                        {% for vai in OutdoorDoctor %}
+                        <tr>
+                            <td>{{vai.name}}</td>
+
+                            <td>{{vai.phone}}</td>
+
+                            <td>{{vai.gender}}</td>
+                            <td>{{vai.age}}</td>
+                            <td>{{vai.doctor}}</td>
+                            <td>{{vai.date}}</td>
+                            <td><a class ="btn btn-sm btn-info" href="update_outdoor/{{ vai.id }}">Update</a></td>
+                            <td><a class ="btn btn-sm btn-danger" href="delete_outdoor/{{ vai.id }}">delete</a></td>
+                                   
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="card card-body">
+                    <p> <b>Home Patient Appointment List</b></p>
+                    <table class="table">
+                        <tr>
+    
+                            <th>Appointment Date</th>
+                            <th>Nurse</th>
+                            <th>Doctor</th>
+                         
+                      
+                        </tr>
+                        {% for vai in  new2 %}
+                        <tr>
+                            <td>{{vai.ap_date}}</td>
+                            <td>{{vai.ap_name}}</td>
+                            <td>{{vai.ap_doctor}}</td>
+                          
+                            <th><a class ="btn btn-sm btn-info"href="">Edit</th>
+                            <th><a class ="btn btn-sm btn-danger"href="">Delete</th>
+                            
+                               
+                           
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                
+            </div>
+
+                <div class="card card-body">
+                    <table class="table">
+                        <tr>
+    
+                            <th>Contact(Name)</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Message</th>
+                            
+                                
+
+                            
+                        </tr>
+                        {% for a in contact %}
+                        <tr>
+                            <td>{{a.name}}</td>
+                            <td>{{a.address}}</td>
+                            <td>{{a.phone}}</td>
+                            <td>{{a.message}}</td>
+                            {% comment %} <td><a class ="btn btn-sm btn-info" href="update_contact/{{ a.id }}/">Edit</a></td> {% endcomment %}
+                            {% comment %} <td><a class ="btn btn-sm btn-info" href="">Edit</td> {% endcomment %}
+                            <td><a class ="btn btn-sm btn-info" href="update_contact/{{ a.id }}">Update</a></td>
+                            {% comment %} <td><a class ="btn btn-sm btn-danger" href="delete_contact/{{ a.id }}">Delete</a></td> {% endcomment %}
+                            <td><a class ="btn btn-sm btn-danger" href="delete_contact/{{ a.id }}">delete</a></td>
+                            {% comment %} <td><a class ="btn btn-sm btn-danger" href="{% url 'delete_contact' a.id%}">Delete</a></td> {% endcomment %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                  
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+
+                        <th>Appointment Date</th>
+                        <th>Nurse</th>
+                        <th>Doctor</th>
+                     
+                  
+                    </tr>
+                    {% for vai in  new2 %}
+                    <tr>
+                        <td>{{vai.ap_date}}</td>
+                        <td>{{vai.ap_doctor}}</td>
+                        <td>{{vai.Phone}}</td>
+                      
+                        <td><a class ="btn btn-sm btn-info"href="">Edit</td>
+                        <td><a class ="btn btn-sm btn-danger" href="delete_appointment/{{ vai.id }}">delete</a></td>
+                       
+                        
+                           
+                       
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+                
+                       
+                                
+                      
+
+                
+                
+            </div>
+        </div>
+{% endblock content%}                     
+
+<br><a class ="btn btn-sm btn-info" href="/addmin">Go back</a><br><nr>
+
+    <br><a class ="btn btn-sm btn-danger"href="/logout">logout</a><br>
+
+
+
+
+{% endblock body %}

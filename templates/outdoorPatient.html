@@ -1,0 +1,50 @@
+{% extends 'abase.html' %}
+{% block title %}result{% endblock title %}
+{% block body %}
+
+{% block content %}
+<form class = "my-4" action="/outdoorPatient">
+    <div class = "input-group mb-3">
+        <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+        <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Search</button>
+    </div>
+<div class="card card-body">
+                
+    <table class="table">
+        <tr>
+            <th>Serial</th>
+            <th>OutDoor Patient (Name)</th>
+            <th>Contact</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Doctor</th>
+            <th>Date</th>
+
+            
+            
+        {% for vai in OutdoorDoctor %}
+        <tr>
+            <td>{{vai.id}}
+            <td>{{vai.name}}</td>
+
+            <td>{{vai.phone}}</td>
+
+            <td>{{vai.gender}}</td>
+            <td>{{vai.age}}</td>
+            <td>{{vai.doctor}}</td>
+            <td>{{vai.date}}</td>
+    
+                   
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content%}                     
+
+<br><a class ="btn btn-sm btn-info" href="/addmin">Go back</a><br><nr>
+
+  
+
+
+
+{% endblock body %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}services{% endblock title %}
+{% block body %}
+
+<h1>Update Contact</h1>
+
+<form action=""method="post">
+{% csrf_token %}
+Name:<br>
+<input name="name" value="{{ contact.name }}">
+<br><br>
+Email:<br>
+<input name="email" value="{{ contact.email }}">
+<br><br>
+Address:<br>
+<input name="address" value="{{ contact.address }}">
+<br><br>
+Phone:<br>
+<input name="phone" value="{{ contact.phone }}">
+<br><br>
+Message:<br>
+<input name="message" value="{{ contact.message }}">
+<br><br>
+
+
+
+<input type="submit" value="Confirm">
+</form>
+{% endblock body %}

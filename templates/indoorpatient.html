@@ -1,0 +1,114 @@
+{% extends 'abase.html' %}
+{% block title %}House{% endblock title %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logged in user</title>
+  <style>
+    h1 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+   
+        body {
+          background-image: url('https://www.utoronto.ca/sites/default/files/iStock-1038799594_0.jpg');
+        }
+       
+    </style>
+</head>
+ <br>
+ <br>
+ <br>
+  <form class = "my-4" action="/indoorpatient">
+    <div class = "input-group mb-3">
+        <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+        <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Search</button>
+    </div>
+  
+  
+  {% comment %} <div class ="row">
+      <div class ="col">
+          <div class = "card card-body">
+              <form method="post">
+                  {{myFilter.form}}
+
+              <button class ="btn btn-primary" type-"submit">
+                  Search</button>
+              </form>
+          </div>
+      </div>
+  </div> {% endcomment %}
+  {% comment %} from:<input type="date" name="fromdate"/>
+  To : <input type="date" name="todate"/>
+  <input type="submit" value="Search"/> {% endcomment %}
+</br>       
+
+  
+
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-md">
+            <div class="col-md">
+                {% comment %} <div class="card card0body">
+                    <a  class="btn btn-success"href="/IndoorAdmission"><h5>Add a New Patient</h5></a>
+                </div> {% endcomment %}
+ 
+                <div class="card card-body">
+                    <table class="table">
+                        <tr>
+                            <th>Patient Type </th>
+                            <th>Patient ID</th>
+                            <th>Status</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            {% comment %} <th>Age</th> {% endcomment %}
+                            <th>Contact</th>
+                           
+                            <th>Entry Date</th>
+                            <th>Discharge Date</th>
+                            <th>Total Bill</th>
+                            <th> Paid</th>
+                            <th> Due</th>
+                            
+                        </tr>
+                        {% for vai in IndoorAdmission %}
+                        <tr>
+                            <td>{{vai.indoor_treatment_patient_type}}</td>
+                            <td>{{vai.indoor_treatment_patient_id}}</td>
+                            <td>{{vai.indoor_treatment_patient_status}}</td>
+                            <td>{{vai.patient_name}}</td>
+                            <td>{{vai.patient_gender}}</td>
+                            {% comment %} <td>{{vai.patient_age}}</td> {% endcomment %}
+                            <td>{{vai.patient_phone}}</td>
+                            <td>{{vai.indoor_patient_bed_entry_time}}</td>
+                            <td>{{vai.indoor_patient_bed_discharge_time}}</td>
+                            <td>{{vai.indoor_treatment_total_bill}}</td>
+                            <td>{{vai.indoor_treatment_total_paid}}</td>
+                            <td>{{vai.indoor_treatment_total_due}}</td>
+                            <td><a class ="btn btn-sm btn-info" href="update_indoor/{{ vai.id }}">Update</a></td>
+                            <td><a class ="btn btn-info" href="iconfirm/{{ vai.id }}">Send ID</a></td>
+                            <th><a class ="btn btn-sm btn-info"href="/ipreport">Report</th>
+                            <td><a class ="btn btn-success" href="addIpreport/{{ vai.id }}">Add report </a></td>
+                            
+                            <td><a class ="btn btn-success" href="discharge_patient/{{ vai.id }}">Discharge </a></td>  
+                            <td><a class ="btn btn-sm btn-danger" href="delete_indoor/{{ vai.id }}">delete</a></td>    
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            
+        </div>
+    </div>
+{% endblock content%}   
+
+{% comment %} <br><a class ="btn btn-sm btn-danger" href="/logout">logout</a><br><nr> {% endcomment %}
+
+<p><br><a class="btn btn-success" href="/addmin">Go back</a><br><nr></p>
+
+</body>
+</html>
+{% endblock body %}

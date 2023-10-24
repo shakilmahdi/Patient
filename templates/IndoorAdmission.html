@@ -1,0 +1,576 @@
+{% extends 'pbase.html' %}
+{% block title %}Indoor patient{% endblock title %}
+{% block body %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Management </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+
+</head>
+<style>
+    .proclinic-bg.main {
+        display: none;
+    }
+
+    a.navbar-brand.arrow_style span {
+        color: #ffffff;
+        background: black;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px 0;
+        text-align: center;
+    }
+    .sk{
+        display: none
+    }
+</style>
+<body>
+    <div class="wrapper">
+
+        <!DOCTYPE html>
+<html lang="en">
+
+
+<style>
+    .proclinic-bg.main {
+        display: none;
+    }
+
+    a.navbar-brand.arrow_style span {
+        color: #ffffff;
+        background: black;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px 0;
+        text-align: center;
+    }
+</style>
+
+<script>
+    function myFunction(e) {
+        var elems = document.querySelectorAll(".active");
+        [].forEach.call(elems, function(el) {
+            el.classList.remove("active");
+        });
+        e.target.class = "active";
+    }
+</script>
+
+        <div id="content">
+
+
+<script>
+    $(document).ready(function() {
+        var links = $('ul#sidebar-nav li').children();
+        $.each(links, function(key, value) {
+            if (value.href == document.URL) {
+                $(this).parent().parent().addClass('show');
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script><script>
+    let hidden = false;
+    $(".navbar-brand").click(function() {
+        $(".proclinic-bg").toggleClass("main");
+        if ($('.proclinic-bg').hasClass('main')) {
+            $(".icon").toggleClass("ti-arrow-left");
+            $(".icon").toggleClass("ti-arrow-right");
+        } else {
+            $(".icon").toggleClass("ti-arrow-left");
+            $(".icon").toggleClass("ti-arrow-right");
+        }
+    });
+
+    function logout() {
+        jQuery.ajax({
+            type: 'POST',
+            url: '../scripts/clear_session.php',
+            cache: false,
+            //dataType: "json", // and this
+            data: {},
+
+            success: function(response) {
+                window.open("login.php", "_self");
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                //console.log(textStatus, errorThrown);
+                alert("alert : " + errorThrown);
+            }
+        });
+
+    }
+</script>           
+<div class="col-md-12" style="background-color: #f9f5f5;padding: 20px;border-radius: 10px;">
+    <div class="container-fluid">
+        <br>
+        {% comment %} <a class ="btn btn-sm btn-success" href="/eip"> if u are already registered click here</a><br> {% endcomment %}
+        
+        <br>
+                <div class="row">
+                    <!-- Widget Item -->
+                                        <div class="col-md-12">
+                        <div class="widget-area-2 proclinic-box-shadow">
+                            <h3 class="widget-title">Patient Admission Form</h3><br>
+                            <form action=""class="form-horizontal form-material mb-0" id="patient_allotment_form" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="form-group col-md-2">
+                                         {% comment %} <label for="inbdoor_treatment_patient_type">Patient Type</label> {% endcomment %}
+                                         <input type="text" placeholder="Patient Type" class="form-control sk" id="inbdoor_treatment_patient_type" name="indoor_treatment_patient_type" readonly>
+                                    </div>
+                               
+                                    <div class="form-group col-md-2">
+                                        <input type="text"  placeholder="Patient ID" class="form-control sk" id="inbdoor_treatment_patient_id" name="indoor_treatment_patient_id" readonly>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="text" placeholder="Patient ID" class="form-control sk" id="indoor_treatment_patient_status" name="indoor_treatment_patient_status" value ="Pending"readonly>
+                                    </div>
+                                <div class="form-row">
+                                    <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                    <input type="hidden" name="request_user_id" value="1">
+                                    <input type="hidden" name="content" value="indoor_allotment">
+                                    <input type="hidden" name="get_patient_id" id="get_patient_id" value="">
+                                    <div class="form-group col-md-3">
+                                        <div class="form-group col-md-12">        
+                                            <input type="text" placeholder="Patient Name" class="form-control" id="patient_name" name="patient_name" value={{IndoorAdmission.patient_name}}>
+                                        </div>
+                                    </div>
+                                     <div class="form-group col-md-1">
+                                        <input type="text" placeholder="Patient Age" class="form-control" id="patient_age" name="patient_age" >
+                                    </div>
+                                    <div class="form-group col-md-1.5">
+                                        <select id="patient_gender" class="form-control " name="patient_gender" placeholder="Pick a Gender..." >
+                                            <option value="">Select Gender...</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-1.5">
+                                        <input type="text" placeholder="Patient Phone" class="form-control" id="patient_phone" name="patient_phone" >
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="email" placeholder="Email" class="form-control" id="patient_email" name="patient_email" >
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                         <input type="text" placeholder="National ID" class="form-control" id="patient_national_ID" name="patient_national_ID">
+                                    </div>
+        
+                        </div>
+                                    </div>
+
+
+                                    <table id="datatable1" class="table dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Admisson Category<i class="text-danger"> * </i></th>
+                                                {% comment %} <th>Room Type</th> {% endcomment %}
+                                                <th>Room Price</th>
+                                                <th>Entry Time<i class="text-danger"> * </i></th>
+                                                <th>Discharge Time<i class="text-danger"> * </i></th>                                              
+                                                <th>Total Bill</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="datatable1_body">
+                                            <tr>
+                                                <td>
+                                                    <select id="indoor_patient_bed_bed_id" class="form-control indoor_patient_bed_bed_id" name="indoor_patient_bed_bed_id" placeholder="Pick a Service..." onchange="changeDataBed(this);" >
+                                                        <option value="">Select a Bed...</option>
+                                                        <option value="1">Male Ward</option><option value="2">Female Ward</option><option value="3">AC Cabin</option><option value="4">Non AC Cabin</option>                                                    </select>
+                                                </td>
+
+                                                {% comment %} <td>
+                                                    <input type="text" class="form-control indoor_bed_category_name" placeholder="Bed Category" id="indoor_bed_category_name" name="indoor_bed_category_name">
+                                                </td> {% endcomment %}
+
+                                                <td>
+                                                    <input type="number" class="form-control indoor_bed_price" placeholder="Price" id="indoor_bed_price" name="indoor_bed_price" 
+                                                </td>
+
+                                                
+
+                                                <td>
+                                                    <input type="date" class="form-control indoor_patient_bed_entry_time" placeholder="Entry time" id="indoor_patient_bed_entry_time" name="indoor_patient_bed_entry_time" onchange="changeDataDoctor(this);changeDataBed(this)" >
+                                                </td>
+                                             
+                                            
+
+                                                <td>
+                                                    <input type="date" min=`${indoor_patient_bed_entry_time}` class="form-control indoor_patient_bed_discharge_time" placeholder="Discharge time" id="indoor_patient_bed_discharge_time" name="indoor_patient_bed_discharge_time" onchange="changeDataDoctor(this);changeDataBed(this)" >
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control bed_total_bill" placeholder="Total Bill" id="bed_total_bill" name="bed_total_bill" >
+                                                </td>
+                                            
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                    <table id="datatable2" class="table dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Department<i class="text-danger"> * </i></th>
+                                                {% comment %} <th>Specialization</th> {% endcomment %}
+                                                <th>Service Fee</th>
+                                                {% comment %} <th>Entry Time<i class="text-danger"> * </i></th>
+                                                <th>Discharge Time<i class="text-danger"> * </i></th> {% endcomment %}
+                                                <th>Total Bill</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody id="datatable2_body">
+                                            <tr>
+                                                <td>
+                                                    <select id="indoor_patient_doctor_doctor_id" class="form-control indoor_patient_doctor_doctor_id" name="indoor_patient_doctor_doctor_id" placeholder="Pick a Service..." onchange="changeDataDoctor(this);" >
+                                                        <option value="">Select a Department...</option>
+                                                        <option value="5">ICU</option><option value="6">CCU</option><option value="7">General</option><option value="8">Surgery</option><option value="9">Cardiology</option><option value="10">Burn Center</option><option value="11">Anesthetics</option>                                                    </select>
+                                                </td>
+
+                                                {% comment %} <td>
+                                                    <input type="text" class="form-control doctor_specialization" placeholder="Doctor Specialization" id="doctor_specialization" name="doctor_specialization" >
+                                                </td> {% endcomment %}
+
+                                                <td>
+                                                    <input type="number" class="form-control doctor_visit_fee" placeholder="Fee" id="doctor_visit_fee" name="doctor_visit_fee">
+                                                </td>
+
+                                                {% comment %} <td>
+                                                    <input type="date" class="form-control indoor_patient_doctor_entry_time" placeholder="Entry time" id="indoor_patient_doctor_entry_time" name="indoor_patient_doctor_entry_time" onchange="changeDataDoctor(this);">
+                                                </td>
+
+                                                <td>
+                                                    <input type="date" class="form-control indoor_patient_doctor_discharge_time" placeholder="Discharge time" id="indoor_patient_doctor_discharge_time" name="indoor_patient_doctor_discharge_time" onchange="changeDataDoctor(this);">
+                                                </td> {% endcomment %}
+                                                <td>
+                                                    <input type="number" class="form-control doctor_total_bill" placeholder="Bill" id="doctor_total_bill" name="doctor_total_bill">
+                                                </td>
+
+                                       
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                    <table id="datatable3" class="table dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Admission Charge<i class="text-danger"> * </i></th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="datatable3_body">
+                                            <tr>
+                                                <td>
+                                                    <select id="outdoor_service_id" class="form-control outdoor_service_id" name="outdoor_service_id" placeholder="Pick a Service..." onchange="changeDataService(this);">
+                                                        <option value="">Select a service...</option>
+                                                        <option value="183">admission</option><option value="184">VIP Admission</option>                                                    </select>
+                                                </td>
+
+                                                <td>
+                                                    <input type="number" class="form-control outdoor_service_rate" placeholder="Fee" id="outdoor_service_rate" name="outdoor_service_rate" >
+                                                </td>
+
+
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+                                    <div class="form-group col-md-4">
+                                        <label for="indoor_treatment_total_bill">Total Bill</label>
+                                        <input type="number" placeholder="Total Bill" class="form-control" id="indoor_treatment_total_bill" name="indoor_treatment_total_bill">
+                                    </div>
+                                     {% comment %} <div class="form-group col-md-4">
+                                        <label for="indoor_treatment_discount_pc">Discount %</label>
+                                        <input type="number" min="0" max="100" placeholder="Discount" class="form-control" id="indoor_treatment_discount_pc" name="indoor_treatment_discount_pc" onchange="update_total_bill();" value="0" >
+                                     </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="indoor_treatment_total_bill_after_discount"> Bill after Discount</label>
+                                        <input type="number" placeholder="In Total Bill" class="form-control" id="indoor_treatment_total_bill_after_discount" name="indoor_treatment_total_bill_after_discount" >
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="indoor_treatment_total_paid">Paid<i class="text-danger"> * </i></label>
+                                        <input type="number" placeholder="Total Paid" class="form-control" onchange="update_total_bill();" id="indoor_treatment_total_paid" name="indoor_treatment_total_paid" >
+                                    </div> 
+                                    <div class="form-group col-md-4">
+                                        <label for="indoor_treatment_total_due">Due</label>
+                                        <input type="number" placeholder="Total Due" class="form-control" id="indoor_treatment_total_due" name="indoor_treatment_total_due" value="0">
+                                    </div> 
+                                 
+                                   
+                                   <div class="form-group col-md-12">
+                                        <label for="indoor_treatment_note">Note</label>
+                                        <input type="text" placeholder="Note" class="form-control" id="indoor_treatment_note" name="indoor_treatment_note">
+                                    </div> {% endcomment %}
+                                    <div class="form-group col-md-6 mb-3">
+                                        <button type="submit" class="btn btn-primary btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="loader"></div>
+                        </div>
+                    </div>
+                    <!-- /Widget Item -->
+                </div>
+            </div>
+            <div>
+
+            </div>
+           
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- Required datatable js -->
+<script>
+    document.getElementById("inbdoor_treatment_patient_type").value = "Admission";
+  </script>
+<script type="text/javascript">
+    $(function(){
+        var dtToday = new Date();
+     
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate() ;
+        var year = dtToday.getFullYear();
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+         day = '0' + day.toString();
+        var maxDate = year + '-' + month + '-' + day;
+        $('#indoor_patient_bed_entry_time').attr('min', maxDate);
+    });
+    </script>
+
+    <script>
+        let currentDate = new Date();
+        let time ="IP"+currentDate.getFullYear()+"" +currentDate.getDay()+""+currentDate.getHours() + "" + currentDate.getMinutes() + "" + currentDate.getSeconds()+""+currentDate.getMilliseconds();
+console.log(time);
+        console.log(currentDate)
+        document.getElementById('inbdoor_treatment_patient_id').value = time;
+        </script>
+    <script type="text/javascript">
+        $(function(){
+            var dtToday = new Date();
+         
+            var month = dtToday.getMonth() + 1;
+            var day = dtToday.getDate();
+            var year = dtToday.getFullYear();
+            if(month < 10)
+                month = '0' + month.toString();
+            if(day < 10)
+             day = '0' + day.toString();
+            var maxDate = year + '-' + month + '-' + day;
+            $('#indoor_patient_bed_discharge_time').attr('min', maxDate);
+        });
+        </script>
+        <script>
+            const indoor_patient_bed_entry_timeField = document.getElementById("indoor_patient_bed_entry_time");
+            const indoor_patient_bed_discharge_timeField = document.getElementById("indoor_patient_bed_discharge_time");
+          
+            indoor_patient_bed_entry_timeField.addEventListener("change", function() {
+                indoor_patient_bed_discharge_timeField.min = indoor_patient_bed_entry_timeField.value;
+            });
+          </script>    
+
+
+<script>
+    $(document).ready(function() {
+        var links = $('ul#sidebar-nav li').children();
+        $.each(links, function(key, value) {
+            if (value.href == document.URL) {
+                $(this).parent().parent().addClass('show');
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script></body>
+<script>
+    var spinner = $('#loader');
+    $(document).ready(function() {
+        loadPatientonbegining();
+
+
+        $('form#IndoorAdmissionForm').on('submit', function(event) {
+            event.preventDefault();
+            spinner.show();
+            var formData = new FormData(this);
+            var currentdate = new Date();
+            var datetime = currentdate.getDate().toString() +
+                (currentdate.getMonth() + 1).toString() +
+                currentdate.getFullYear().toString() +
+                currentdate.getHours().toString() +
+                currentdate.getMinutes().toString() +
+                currentdate.getSeconds().toString();
+            console.log(datetime);
+            formData.append('indoor_treatment_admission_id', datetime);
+            $.ajax({
+                url: 'IndoorAdmission',
+                type: 'POST',
+                data: formData,
+                success: function(data) {
+                    //alert(data);
+                    console.log(data);
+                    spinner.hide();
+                    var obj = JSON.parse(data);
+                    alert(obj.message);
+                    //alert(obj.status);
+                    if (obj.status) {
+                        //location.reload();
+                        // window.open("indoor_treatment_list.php", "_self");
+                        window.open("indoor_treatment_admission_id" + obj.indoor_treatment_id, "_self");
+                        console.log(obj);
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert("alert : " + errorThrown);
+                    spinner.hide();
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+    });
+
+
+    var all_bed = [{"indoor_bed_id":1,"indoor_bed_user_added_id":1,"indoor_bed_category_id":1,"indoor_bed_name":"101","indoor_bed_room_no":"1100","indoor_bed_price":"1000","indoor_bed_status":"available","indoor_bed_creation_time":"2022-08-01 12:28:41","indoor_bed_modification_time":"2022-10-04 13:40:51","indoor_bed_category_user_added_id":1,"indoor_bed_category_name":"Ward-Male","indoor_bed_category_description":"General Male Ward","indoor_bed_category_status":"active","indoor_bed_category_creation_time":"2022-08-01 12:28:41","indoor_bed_category_modification_time":"2022-08-01 12:28:41"},{"indoor_bed_id":2,"indoor_bed_user_added_id":1,"indoor_bed_category_id":2,"indoor_bed_name":"201","indoor_bed_room_no":"2100","indoor_bed_price":"1500","indoor_bed_status":"available","indoor_bed_creation_time":"2022-08-01 12:28:41","indoor_bed_modification_time":"2022-08-01 12:28:41","indoor_bed_category_user_added_id":1,"indoor_bed_category_name":"Ward-Female","indoor_bed_category_description":"General Female Ward","indoor_bed_category_status":"active","indoor_bed_category_creation_time":"2022-08-01 12:28:41","indoor_bed_category_modification_time":"2022-08-01 12:28:41"},{"indoor_bed_id":3,"indoor_bed_user_added_id":1,"indoor_bed_category_id":3,"indoor_bed_name":"301","indoor_bed_room_no":"3100","indoor_bed_price":"2500","indoor_bed_status":"available","indoor_bed_creation_time":"2022-08-01 12:28:41","indoor_bed_modification_time":"2022-10-10 17:08:13","indoor_bed_category_user_added_id":1,"indoor_bed_category_name":"Cabin-AC","indoor_bed_category_description":"AC Cabin","indoor_bed_category_status":"active","indoor_bed_category_creation_time":"2022-08-01 12:28:41","indoor_bed_category_modification_time":"2022-08-01 12:28:41"},{"indoor_bed_id":4,"indoor_bed_user_added_id":1,"indoor_bed_category_id":4,"indoor_bed_name":"401","indoor_bed_room_no":"4100","indoor_bed_price":"2000","indoor_bed_status":"available","indoor_bed_creation_time":"2022-08-01 12:28:41","indoor_bed_modification_time":"2022-10-10 17:10:53","indoor_bed_category_user_added_id":1,"indoor_bed_category_name":"Cabin-Non AC","indoor_bed_category_description":"Non AC Cabin","indoor_bed_category_status":"active","indoor_bed_category_creation_time":"2022-08-01 12:28:41","indoor_bed_category_modification_time":"2022-08-01 12:28:41"}];
+    var all_doctor = [{"doctor_id":5,"doctor_user_added_id":2,"doctor_name":"Assoc.Prof.Dr.Johurul Hoque","doctor_description":"","doctor_specialization":"Head Of Dept.Of Orthopedic","doctor_experience":"Surgeon","doctor_age":"45","doctor_email":"","doctor_dob":"","doctor_gender":"male","doctor_blood_group":"","doctor_visit_fee":"600","doctor_phone":"01819061993","doctor_emergency_phone":"","doctor_address":"56,Block-A(2nd Floor),Road-03,Dhaka Real State,Katasur,Mohammadpur,Dhaka-1207","doctor_status":"active","photo_url":"","document_url":"","doctor_creation_time":"2022-05-21 16:04:27","doctor_modification_time":null},{"doctor_id":6,"doctor_user_added_id":2,"doctor_name":"Dr.Muhammad Saker","doctor_description":"","doctor_specialization":"General Physician","doctor_experience":"MBBS","doctor_age":"29","doctor_email":"","doctor_dob":"","doctor_gender":"male","doctor_blood_group":"","doctor_visit_fee":"300","doctor_phone":"01704597065","doctor_emergency_phone":"","doctor_address":"Momtaj Trauma Center","doctor_status":"active","photo_url":"","document_url":"","doctor_creation_time":"2022-05-21 16:08:15","doctor_modification_time":null},{"doctor_id":7,"doctor_user_added_id":2,"doctor_name":"Dr.Kazi Sazzad Hossain","doctor_description":"","doctor_specialization":"General Physician","doctor_experience":"MBBS","doctor_age":"30","doctor_email":"","doctor_dob":"","doctor_gender":"male","doctor_blood_group":"B+","doctor_visit_fee":"300","doctor_phone":"01533839825","doctor_emergency_phone":"","doctor_address":"Momtaj trauma Center","doctor_status":"active","photo_url":"","document_url":"","doctor_creation_time":"2022-05-21 16:10:07","doctor_modification_time":null},{"doctor_id":8,"doctor_user_added_id":2,"doctor_name":"Dr.Marufur Rahman Talha","doctor_description":"","doctor_specialization":"General Physician","doctor_experience":"MBBS","doctor_age":"29","doctor_email":"","doctor_dob":"","doctor_gender":"male","doctor_blood_group":"","doctor_visit_fee":"300","doctor_phone":"01930997796","doctor_emergency_phone":"","doctor_address":"Momtaj Trauma Center","doctor_status":"active","photo_url":"","document_url":"","doctor_creation_time":"2022-05-21 16:11:20","doctor_modification_time":null},{"doctor_id":9,"doctor_user_added_id":2,"doctor_name":"Towhidul Islam","doctor_description":"","doctor_specialization":"Pain,Arthritis,Sports injuries CP& Rehab Mnage","doctor_experience":"BSC PT(Faculty Of Medicine -DU)","doctor_age":"28","doctor_email":"","doctor_dob":"","doctor_gender":"","doctor_blood_group":"","doctor_visit_fee":"400","doctor_phone":"01736462005","doctor_emergency_phone":"","doctor_address":"","doctor_status":"active","photo_url":"","document_url":"","doctor_creation_time":"2022-05-22 16:41:17","doctor_modification_time":null},{"doctor_id":10,"doctor_user_added_id":2,"doctor_name":"Mst.Kajal REkha","doctor_description":"","doctor_specialization":"DPT(S.M.F) Dhaka","doctor_experience":"","doctor_age":"25","doctor_email":"","doctor_dob":"","doctor_gender":"female","doctor_blood_group":"","doctor_visit_fee":"400","doctor_phone":"01844080674","doctor_emergency_phone":"","doctor_address":"","doctor_status":"active","photo_url":"","document_url":"","doctor_creation_time":"2022-05-22 16:44:35","doctor_modification_time":null},{"doctor_id":11,"doctor_user_added_id":2,"doctor_name":"Mst.Kajal Rekha","doctor_description":"","doctor_specialization":"Pain,Arthritis,Sports injuries CP& Rehab Mnage","doctor_experience":"DPT(S.M.F) Dhaka","doctor_age":"25","doctor_email":"","doctor_dob":"","doctor_gender":"","doctor_blood_group":"","doctor_visit_fee":"400","doctor_phone":"01844080671","doctor_emergency_phone":"","doctor_address":"","doctor_status":"active","photo_url":"","document_url":"","doctor_creation_time":"2022-05-22 16:46:53","doctor_modification_time":null}];
+    var all_admission = [{"outdoor_service_id":183,"outdoor_service_user_added_id":2,"outdoor_service_name":"admission","outdoor_service_Category":"Admission","outdoor_service_room_no":"","outdoor_service_description":"","outdoor_service_rate":"1000","outdoor_service_creation_time":"2022-08-02 17:41:30","outdoor_service_modification_time":null},{"outdoor_service_id":184,"outdoor_service_user_added_id":1,"outdoor_service_name":"VIP Admission","outdoor_service_Category":"Admission","outdoor_service_room_no":"","outdoor_service_description":"","outdoor_service_rate":"1500","outdoor_service_creation_time":"2022-10-10 17:16:50","outdoor_service_modification_time":null}];
+
+    function changeDataBed(instance) {
+        var row = $(instance).closest("tr");
+        var indoor_bed_id = parseFloat(row.find(".indoor_patient_bed_bed_id").val());
+
+        for (var i = 0; i < Object.keys(all_bed).length; i++) {
+
+            if (all_bed[i]['indoor_bed_id'] == indoor_bed_id) {
+                let per_day_price = isNaN(parseInt(all_bed[i]['indoor_bed_price'])) ? 0 : all_bed[i]['indoor_bed_price'];
+                row.find(".indoor_bed_category_name").val(all_bed[i]['indoor_bed_category_name']);
+                row.find(".indoor_bed_price").val(per_day_price);
+                let entry_date = row.find(".indoor_patient_bed_entry_time").val();
+                let discharge_date = row.find(".indoor_patient_bed_discharge_time").val();
+
+                let total_dates = DateDiff(entry_date, discharge_date);
+                
+                row.find(".bed_total_bill").val(per_day_price * total_dates);
+            }
+        }
+        update_total_bill();
+    }
+
+    function changeDataDoctor(instance) {
+        var row = $(instance).closest("tr");
+        var doctor_id = parseFloat(row.find(".indoor_patient_doctor_doctor_id").val());
+
+        for (var i = 0; i < Object.keys(all_doctor).length; i++) {
+
+            if (all_doctor[i]['doctor_id'] == doctor_id) {
+
+                let per_day_price = isNaN(parseInt(all_doctor[i]['doctor_visit_fee'])) ? 0 : all_doctor[i]['doctor_visit_fee'];
+                row.find(".doctor_specialization").val(all_doctor[i]['doctor_specialization']);
+                row.find(".doctor_visit_fee").val(per_day_price);
+
+                let entry_date = document.getElementById("indoor_patient_bed_entry_time").value;
+                let discharge_date = document.getElementById("indoor_patient_bed_discharge_time").value ;
+
+                let total_dates = DateDiff(entry_date, discharge_date);
+                console.log(total_dates)
+                row.find(".doctor_total_bill").val(per_day_price * total_dates);
+            }
+        }
+        update_total_bill();
+    }
+
+    function changeDataService(instance) {
+        var row = $(instance).closest("tr");
+        var outdoor_service_id = parseFloat(row.find(".outdoor_service_id").val());
+
+        for (var i = 0; i < Object.keys(all_admission).length; i++) {
+
+            if (all_admission[i]['outdoor_service_id'] == outdoor_service_id) {
+                let per_day_price = isNaN(parseInt(all_admission[i]['outdoor_service_rate'])) ? 0 : all_admission[i]['outdoor_service_rate'];
+                row.find(".outdoor_service_rate").val(per_day_price);
+            }
+        }
+        update_total_bill();
+    }
+
+    function DateDiff(date1, date2) {
+        date1 = new Date(date1);
+        date2 = new Date(date2);
+        date1.setHours(0);
+        date1.setMinutes(0, 0, 0);
+        date2.setHours(0);
+        date2.setMinutes(0, 0, 0);
+        var datediff = Math.abs(date1.getTime() - date2.getTime()); // difference
+        return parseInt(datediff / (24 * 60 * 60 * 1000), 10); //Convert values days and return value
+    }
+
+    function update_total_bill() {
+        var bedtotal = 0;
+        $("#datatable1 tr").each(function() {
+            var total = $(this).find("input.bed_total_bill").val();
+            bedtotal = parseInt(bedtotal) + parseInt(isNaN(parseInt(total)) ? 0 : total);
+        });
+
+        var doctortotal = 0;
+        $("#datatable2 tr").each(function() {
+            var total = $(this).find("input.doctor_total_bill").val();
+            doctortotal = parseInt(doctortotal) + parseInt(isNaN(parseInt(total)) ? 0 : total);
+        });
+
+        var admissionfee = 0;
+        $("#datatable3 tr").each(function() {
+            var total = $(this).find("input.outdoor_service_rate").val();
+            admissionfee = parseInt(admissionfee) + parseInt(isNaN(parseInt(total)) ? 0 : total);
+        });
+
+        let in_total = bedtotal + doctortotal + admissionfee;
+        document.getElementById("indoor_treatment_total_bill").value = parseInt(in_total);
+        {% comment %} var discount = document.getElementById("indoor_treatment_discount_pc").value; 
+        discount = isNaN(parseInt(discount)) ? 0 : parseInt(discount);
+        in_total = parseInt(in_total) - (parseInt(in_total) * (parseInt(discount) / 100));
+        document.getElementById("indoor_treatment_total_bill_after_discount").value = in_total;
+        var paid = document.getElementById("indoor_treatment_total_paid").value;
+        document.getElementById("indoor_treatment_total_due").value = parseInt(in_total - paid); {% endcomment %}
+
+
+    }
+
+
+
+</script>
+<script>
+    var a= document.getElementById("indoor_treatment_total_bill").value;
+    console.log();
+</script>
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#select-patient').selectize({
+            sortField: 'text'
+        });
+    });
+</script>
+
+</html>
+{% endblock body %}

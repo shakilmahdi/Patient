@@ -1,0 +1,170 @@
+{% extends 'pbase.html' %}
+{% block title %}result{% endblock title %}
+{% block body %}
+<head>
+
+    <style>
+        h1 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;}
+    
+      
+        .my_bg h1 {
+            color: #ffffff;
+          }
+          .my_bg {
+              background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg');
+              background-size: cover;
+          background-repeat: no-repeat;
+          position: relative;
+          height:100vh;
+          z-index: 1;
+            }
+            .my_bg::before {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              content: "";
+              background: black;
+              opacity: .5;
+              z-index: -1;
+          }
+          input[type="text"] {
+            display: none;
+        }
+          </style>
+
+</head>
+<div class="my_bg">
+<br>
+<br>
+  
+    {% block content %}
+    <br>
+    Your Information..
+ 
+    
+    <div class="row">
+    {% comment %} <form class = "my-4" action="/hplist">    
+        <div class = "input-group mb-3">
+            <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+            <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Search</button>
+        </div> {% endcomment %}
+        <div class="col-md">
+         
+            <div class="card card-body">
+               
+                
+                <table class="table">
+                    <tr>
+                        <th>Patient Type</th>
+                        <th>Patient ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Contact</th>
+                        <th> Active Status</th>
+                        <th> Entry Date</th>
+                        <th> Discharge Time</th>
+                        <th>Total Bill</th>
+                        <th> Paid</th>
+                        <th> Due</th>
+
+                    </tr>
+             
+                    {% for vai in  IndoorAdmission %}
+                    <tr>
+                        <td>{{vai.indoor_treatment_patient_type}}</td>
+                        <td>{{vai.indoor_treatment_patient_id}}</td>
+                        {% comment %} <td>{{vai.indoor_treatment_patient_id}}</td> {% endcomment %}
+                        <td>{{vai.patient_name}}</td>
+                        <td>{{vai.patient_age}}</td>
+                        <td>{{vai.patient_gender}}</td>
+                        <td>{{vai.patient_phone}}</td>
+                        <td>{{vai.indoor_treatment_patient_status}}</td>
+                        <td>{{vai.indoor_patient_bed_entry_time}}</td>
+                        <td>{{vai.indoor_patient_bed_discharge_time}}</td>
+                        <td>{{vai.indoor_treatment_total_bill}}</td>
+                        <td>{{vai.indoor_treatment_total_paid}}</td>
+                        <td>{{vai.indoor_treatment_total_due}}</td>
+                        
+                        
+                        {% comment %} <tr>
+                            <th> Patient ID</th>
+                            <td>{{vai.indoor_treatment_patient_id}}</td>
+                        <tr>
+                        <tr>
+                            <th>Patient(Name)</th>
+                            <td>{{vai.patient_name}}</td>
+                        </tr>
+                        <tr>
+                            <th>Contact</th>
+                            <td>{{vai.patient_phone}}</td>
+                        </tr>
+                        <tr>
+                            <th>Gender</th>
+                            <td>{{vai.patient_gender}}</td>
+                            
+                        </tr>
+                        <tr>
+                            <th>Age</th>
+                            <td>{{vai.patient_age}}</td>
+                        </tr>
+                        {% comment %} <tr>
+                            <th>Blood Group</th>
+                            <td>{{vai.patient_blood_group}}</td>
+                        </tr> 
+                        <tr>
+                            <th>Register Date</th>
+                            <td>{{vai.indoor_patient_bed_entry_time}}</td>
+                        </tr> {% endcomment %}
+                       {% comment %} <tr> {% endcomment %}
+                            
+                            <td>
+                                <form class = "my-1" action="/ipreport">
+                                <div class = "input-group mb-1">
+                                    <input type="text" name="q" calss= "form-control form-control-1g dnone"   value ="{{vai.indoor_treatment_patient_id}}" readonly placeholder="Search"/>
+                                    <button class ="btn btn-success btn-1g" type="submit" id="button-addon2">See Your Rrport</button>
+                                </div>
+                            </td>
+                        {% comment %} </tr> {% endcomment %}
+                        {% comment %} <td><a class ="btn btn-success" href="ipreport/">report </a></td> {% endcomment %}
+                           {% comment %} <th> <a class ="btn btn-sm btn-success" href="Online_appointment">Appointment</th>
+                            <th><a class ="btn btn-sm btn-info"href="/report">Report</th> {% endcomment %}
+                    </tr>
+                    
+                    {% endfor %}
+                    
+                </table>
+            </div>
+      
+        </div>
+        {% comment %} <form class = "my-4" action="/ipreport">
+            <div class = "input-group mb-3">
+                <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+                <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Rrport</button>
+            </div> {% endcomment %}
+    </div>
+</form>
+<br>
+<br><br>
+
+<h1>
+    <br>
+    <a class ="btn btn-sm btn-success" href="contact">Contact with us</a><br><br>
+       {% comment %} <a class ="btn btn-sm btn-info" href="/ipreport">Report and Prescription</a><br> {% endcomment %}
+       <a class ="btn btn-sm btn-info" href="/patient">Go back</a><br>
+
+</h1>   
+  
+
+
+{% endblock content%}    
+              
+
+
+
+
+{% endblock body %}

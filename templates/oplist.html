@@ -1,0 +1,79 @@
+{% extends 'dbase.html' %}
+{% block title %}result{% endblock title %}
+{% block body %}
+<head>
+    <style>
+        .my_bg h1 {
+            color: #ffffff;
+          }
+          .my_bg {
+              background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg');
+              background-size: cover;
+          background-repeat: no-repeat;
+          position: relative;
+          height:100vh;
+          z-index: 1;
+            }
+            .my_bg::before {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              content: "";
+              background: black;
+              opacity: .5;
+              z-index: -1;
+          }
+    </style>
+</head>
+
+{% block content %}
+<div class="my_bg">
+    <br><br><br>
+<form class = "my-4" action="/oplist">
+    <div class = "input-group mb-3">
+        <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+        <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Search</button>
+    </div>
+<div class="card card-body">
+                
+    <table class="table">
+        <tr>
+            <th>Serial</th>
+            <th>OutDoor Patient (Name)</th>
+            <th>Contact</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Doctor</th>
+            <th>Date</th>
+
+            
+            
+        {% for vai in OutdoorDoctor %}
+        <tr>
+            <td>{{vai.id}}
+            <td>{{vai.name}}</td>
+
+            <td>{{vai.phone}}</td>
+
+            <td>{{vai.gender}}</td>
+            <td>{{vai.age}}</td>
+            <td>{{vai.doctor}}</td>
+            <td>{{vai.date}}</td>
+    
+                   
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content%}                     
+
+<br><a class ="btn btn-sm btn-info" href="/doctor">Go back</a><br><nr>
+
+    <br><a class ="btn btn-sm btn-danger"href="/logout">logout</a><br>
+
+
+</div>
+
+{% endblock body %}

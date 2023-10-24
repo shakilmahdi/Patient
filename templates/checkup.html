@@ -1,0 +1,615 @@
+{% extends 'base.html' %}
+{% block title %}aboutpage{% endblock title %}
+{% block body %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ICT HUB</title>  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="PDCL APP :: PDCL" />
+  <meta content="PDCL APP :: PDCL" name="author" />
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css">
+  
+  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-3.3.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.css"/>
+ <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+ 
+ 
+ 
+  <link href="https://populardiagnostic.com/booking/public/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://populardiagnostic.com/booking/public/assets/global/plugins/select2/css/select2.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"/>
+  <link rel="stylesheet" href="https://populardiagnostic.com/booking/public/css/jquery-confirm.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+ 
+  <style>
+    body{
+     background: #eee;
+     background-position: right;
+     background-repeat: no-repeat;
+    }
+    span{
+        font-size:15px;
+    }
+    a{
+      text-decoration:none; 
+      color: #0062cc;
+    }
+    .row{
+        margin-top: 25px;
+    }
+    .required{
+        color: red;
+    }
+    .box-part{
+        background:#0275d8;
+        border-radius:0;
+        padding:100px 10px;
+        margin:30px 0px;
+    }.box-part1{
+        background:#00984a;
+        border-radius:0;
+        padding:100px 10px;
+        margin:30px 0px;
+    }
+    .btn-success {
+        background-image: linear-gradient(to bottom,#00984a 0,#00984a 100%);
+    }
+    .text{
+        margin:20px 0px;
+    }
+
+    .fa-style{
+      color:#4183D7 !important;
+      transform: scale(3.5,3.5);
+      margin-bottom: 15px
+    }
+
+    .text-white{
+      color: white !important;
+    }
+    .bg-success {
+    background-color: #00984a;
+}
+    .select2-container{
+      width: 100% !important
+    }
+                  input.hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+    #profile-image1 {
+    cursor: pointer;
+     width: 100px;
+    height: 100px;
+  border:2px solid #03b1ce ;}
+  .tital{ font-size:16px; font-weight:500;}
+   .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}  
+
+   li.active{
+    font-weight: bold
+   }
+   
+   .dataTables_wrapper{
+       margin-bottom: 10px;
+   }
+   
+   .dataTables_filter{
+       margin-bottom: 10px;
+   }
+    .table thead {
+        background: #00984a;
+        color:white;
+    }
+    table.dataTable thead {
+        background: #00984a;
+        color:white;
+    }
+    table.dataTable thead .sorting{
+        background-image: none !important;
+    }
+    table.dataTable thead .sorting_asc{
+        background-image: none !important;
+    }
+    table.dataTable thead .sorting_desc{
+        background-image: none !important;
+    }
+
+    .dataTable th{
+       white-space: nowrap !important;
+    }
+    .dataTable td{
+       white-space: nowrap !important;
+    }
+          
+    @media  print {
+     .hidden-print{
+         display: none !important;
+         
+     }
+    }
+    h3.headermy{
+        border-radius:5px; margin:0px !important; margin-top:10px !important;}
+        .shadowed:hover{-webkit-box-shadow: 0px 7px 16px -1px rgba(0,0,0,0.37);
+        -moz-box-shadow: 0px 7px 16px -1px rgba(0,0,0,0.37);
+        box-shadow: 0px 7px 16px -1px rgba(0,0,0,0.37);
+        position: relative;
+        top:-10px;
+    }
+
+    .terms-and-conditions h4{
+      margin-top: 35px
+    }
+    .terms-and-conditions h5{
+      margin-top: 25px
+    }
+    .terms-and-conditions p{
+      padding: 10px 0px 10px 0px
+    }
+  </style>
+  <script type="text/javascript">
+    var base_url="https://populardiagnostic.com/booking";
+    var csrf_token='aU59sP5EQ4M3WzRXpN4HOqiAglRGlSbBk6Zzv15R';
+  </script>
+</head>
+<body style="opacity: 0px !important">
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+      
+    </div>
+  
+<div class="container-fluid">
+  <div class="modal fade" id="terms_and_Conditions" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><h3><strong>Terms & Conditions</strong></h3></h5>
+        </div>
+        <div class="modal-body terms-and-conditions">
+          <h4 style="margin-top: 5px !important"><strong>SECTION 1 - WHAT DO WE DO WITH YOUR INFORMATION?</strong></h4>
+<p>
+  When you sign up to get appointment/sample collection from our website/app, as part of the booking process, we collect the personal information you give us such as your name, address and email address.
+</p>
+<p>
+  When you browse our website, we also automatically receive your computer’s internet protocol (IP) address in order to provide us with information that helps us learn about your browser and operating system.
+</p>
+<p>
+  Email marketing (if applicable): With your permission, we may send you emails about our website offers and other updates.
+</p>
+<h4><strong>SECTION 2 - CONSENT</strong></h4>
+<h5><strong>How do you get my consent?</strong></h5>
+<p>
+  We use bKash Payment Gateway which is very secure for every transection and your transection information will take care by bKash Team.
+</p>
+<p>
+  If we ask for your personal information for a secondary reason, like marketing, we will either ask you directly for your expressed consent, or provide you with an opportunity to say no.
+</p>
+<h5><strong>Payment Procedure / Cancellation</strong></h5>
+<p>
+  <ul>
+    <li>You need to pay full amount of doctor fee to get appointment from our website/apps.</li>
+    <li>If customer’s/patient confirm (payment) once then it will not refundable or any cancellation process not applicable.</li>
+    <li>Before done full payment make confirm you (customer/patient) will take the service.</li>
+  </ul>
+</p>
+<h4><strong>SECTION 3 - DISCLOSURE</strong></h4>
+<p>
+  We may disclose your personal information if we are required by law to do so or if you violate our Terms of Service.
+</p>
+<h4><strong>SECTION 4 - Website</strong></h4>
+<p>
+  Our website is hosted on Cloud. Your data is stored through Cloud storage, databases and the general application. They store your data on a secure server behind a firewall.
+</p>
+<h4><strong>SECTION 6 - SECURITY</strong></h4>
+<p>
+  To protect your personal information, we take reasonable precautions and follow industry best practices to make sure it is not inappropriately lost, misused, accessed, disclosed, altered or destroyed.
+</p>
+<p>
+  If you provide us with your credit card information, the information is encrypted using secure socket layer technology (SSL) and stored with a AES-256 encryption. Although no method of transmission over the Internet or electronic storage is 100% secure, we follow all PCI-DSS requirements and implement additional generally accepted industry standards.
+</p>
+<h4><strong>SECTION 8 - AGE OF CONSENT</strong></h4>
+<p>
+  By using this site, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site.
+</p>
+<h4><strong>SECTION 9 - CHANGES TO THIS PRIVACY POLICY</strong></h4>
+<p>
+  We reserve the right to modify this privacy policy at any time, so please review it frequently. Changes and clarifications will take effect immediately upon their posting on the website. If we make material changes to this policy, we will notify you here that it has been updated, so that you are aware of what information we collect, how we use it, and under what circumstances, if any, we use and/or disclose it.
+</p>        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert bg-danger text-danger" id="msg" style="display: none;">
+   
+</div>  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+body{
+     background-image: url(public/bgimage/bg01.png);
+     background-size: 50%;
+     background-position:top right;
+}
+</style>
+
+<form action="https://populardiagnostic.com/booking/appointment" method="post" id="appointment-form" style="border:none !important">
+<input type="hidden" name="_token" value="aU59sP5EQ4M3WzRXpN4HOqiAglRGlSbBk6Zzv15R">    <div class="col-md-8 col-md-offset-3 col-sm-12 col-lg-6 col-lg-offset-3" style="margin-bottom: 50px">
+        <div class="row">
+            <center>
+                <h3 style="margin-bottom: 20px !important;margin-right: -15px;margin-left: -15px;padding:15px;" class="bg-primary headermy"><b>Doctor Appointment</b></h3>
+            </center>
+
+            <div class="form-group has-feedback">
+                
+                 <h4 class="text-center">
+                    Appointment Date : <strong>November 16,2022</strong>
+                    <input type="hidden" name="appointment_date" id="appointment_date" value="2022-11-16">
+                 </h4>
+                 
+            </div>
+            <hr>
+            
+            <!--<div class="form-group row">-->
+            <!--    <div class="col-md-6">-->
+            <!--        <div class="panel panel-primary" style="border:none !important;">-->
+            <!--            <div class="panel-body bg-primary" style="border-radius: 5px">-->
+            <!--                <h4 class="text-center" style="margin-bottom: 5px !important;">-->
+            <!--                    <label for="type-id-1" style="cursor: pointer;">-->
+            <!--                        <input type="radio" name="type_id" id="type-id-1" value="1" style="cursor: pointer;transform: scale(1.5,1.5)"   checked >&nbsp;&nbsp;-->
+            <!--                        <strong>General Appointment</strong>-->
+            <!--                    </label>-->
+            <!--                </h4>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--    <div class="col-md-6">-->
+            <!--        <div class="panel panel-primary" style="border:none !important;">-->
+            <!--            <div class="panel-body bg-success" style="border-radius: 5px">-->
+            <!--                <h4 class="text-white text-center" style="margin-bottom: 5px !important;">-->
+            <!--                    <label for="type-id-3" style="cursor: pointer;">-->
+            <!--                        <input type="radio" name="type_id" id="type-id-3" value="3" style="cursor: pointer;transform: scale(1.5,1.5)" >&nbsp;&nbsp;-->
+            <!--                        <strong>Video Consultancy</strong>-->
+            <!--                    </label>-->
+            <!--                </h4>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+            
+            <input type="hidden" name="type_id" value="1">
+            
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="branch_id"><strong>Choose Branch</strong></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="branch_id" id="branch_id" class="form-control chosen" onchange="getSpecialist()">
+                            <option value="0">Choose Branch</option>
+                                                                                                <option value="1" >Dhanmondi</option>
+                                                                  <option value="5" >Narayangonj</option>
+                                                                  <option value="6" >Savar</option>
+                                                                  <option value="7" >Uttara</option>
+                                                                  <option value="10" >Mirpur</option>
+                                                                  <option value="18" >Badda</option>
+                                                                                      </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="specialist_id">Speciality</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="specialist_id" class="form-control chosen" id="specialist_id" onchange="getDoctor()">
+                            <option value="0">Choose Speciality</option>
+                            <option value="1" >Medicine</option>
+                            <option value="5" >ortho</option>
+                            <option value="6" >cardiac</option>
+                            <option value="7" >Bone</option>
+                            <option value="10" >Cell</option>
+                            <option value="18" >gaino</option>
+                                                </select>
+                        </select>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="doctor_id">Doctor</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <select name="doctor_id" id="doctor_id" onchange="getDoctorDetails()" class="form-control chosen">
+                                <option value="0">Choose a Doctor</option>
+                            </select>
+                    </div>
+            </div>
+            <div class="form-group" style="display: none" id="doctor_details">
+                
+            </div>
+            
+
+            <div class="form-group has-feedback">
+                <label for="remarks">Notes</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="remarks" placeholder="Notes" class="form-control" type="text" value="">
+                </div>
+            </div>
+            
+            <input type="hidden" name="payment_mode" value="1" />
+            
+            <!--<div class="form-group has-feedback">-->
+            <!--    <label for="payment_mode">Payment By</label>&nbsp;&nbsp;&nbsp;&nbsp;-->
+            <!--    -->
+            <!--    -->
+            <!--        <label for="mode-1">-->
+            <!--            <input type="radio" name="payment_mode" id="mode-1" value="1" checked style="margin-top:20px">-->
+            <!--            &nbsp;-->
+            <!--            <img src="https://populardiagnostic.com/booking/public/paymentModes/1.png" style="margin-top: -10px;width: 50%">-->
+            <!--        </label>-->
+            <!--    -->
+            <!--    -->
+            <!--</div>-->
+
+                            <input type="hidden" name="patient_type" id="patient_type" value="0">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="nav nav-tabs" style="display: flex;justify-content: center;flex-direction: row;">
+                          <li  class="active" ><a data-toggle="tab" href="#new" data-patient-type="0"><i class="fa fa-users"></i>&nbsp;&nbsp;New Patient</a></li>
+                          <li ><a data-toggle="tab" href="#registered" data-patient-type="1"><i class="fa fa-unlock"></i>&nbsp;&nbsp;Already Registered ?</a></li>
+                        </ul>
+                        <div class="tab-content  bg-white">
+                            <div id="new" class="tab-pane fade in active">
+                                <div class="form-group row">
+                                  <div class="col-md-4">
+                                    <label for="name"><strong>Name&nbsp;&nbsp;<span class="text-danger">*</span></strong></label>
+                                    <input type="text" class="form-control" id="name" name="name" value="">
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="phone"><strong>Phone No.&nbsp;&nbsp;<span class="text-danger">*</span></strong></label>
+                                    <input type="text" class="form-control" id="new_phone" name="new_phone" value="" placeholder="01XXXXXXXXX">
+                                  </div>
+                                  <div class="col-md-2">
+                                    <label for="age"><strong>Age</strong></label>
+                                    <input type="number" value="0" min="0" max="100" class="form-control" id="age" name="age" value="">
+                                  </div>
+                                  <div class="col-md-2">
+                                    <label for="gender"><strong>Gender</strong></label>
+                                    <select name="gender" id="gender" class="form-control chosen">
+                                                                                    <option value="1" >Male</option>
+                                                                                    <option value="2" >Female</option>
+                                                                                    <option value="3" >Others</option>
+                                                                            </select>
+                                  </div>
+                              </div>
+                            </div>
+                            <div id="registered" class="tab-pane fade ">
+                                <div class="form-group row">
+                                  <div class="col-md-6">
+                                    <label for="phone"><strong>Phone No.</strong></label>
+                                    <input type="text" class="form-control" id="phone" name="phone" value="" placeholder="01XXXXXXXXX">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label for="password"><strong>Password</strong></label>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label style="cursor: pointer;">
+                        <input type="checkbox" name="agree" id="agree" value="1" style="transform: scale(1.5,1.5);cursor: pointer;" >&nbsp;&nbsp;&nbsp;I agree to the <a data-toggle="modal" data-target="#terms_and_Conditions" style="cursor: pointer;">Terms and Conditions</a>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-7 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary btn-block" id="appointment_submit_btn" disabled><span class="glyphicon glyphicon-send"></span>&nbsp;Confirm Appointment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        checkAgreed();
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $('#patient_type').val($(e.target).attr("data-patient-type"));
+        });
+
+        $("#agree").change(function() {
+            checkAgreed();
+        });
+
+        getSpecialist();
+    });
+
+    function getSpecialist() {
+        var branch_id=$('#branch_id').val();
+        $.ajax({
+            url: base_url+"/get-specialist/"+branch_id,
+            method: "GET",
+            data: {},
+        })
+        .done(function(response) {
+            var specialist_id = "";
+            var data='<option value="0">Choose Specialist</option>';
+            $.each(response, function(index, val) {
+                var selected = '';
+                if(val.id == specialist_id){
+                    selected = 'selected';
+                }
+                data+='<option value="'+(val.id)+'" '+(selected)+'>'+(val.specialist_name)+'</option>';
+            });
+
+            $('#specialist_id').html(data);
+            getDoctor();
+        });
+    }
+
+    function getDoctor() {
+        var doctor_id = "";
+        var data='<option value="0">Choose a Doctor</option>';
+
+        var branch_id=$('#branch_id').val();
+        var specialist_id=$('#specialist_id').val();
+        var date=$('#appointment_date').val();
+
+        if(parseInt(branch_id) > 0 && parseInt(specialist_id) > 0){
+            $.ajax({
+              url: base_url+"/get-doctors/"+branch_id+"/"+specialist_id+"/"+date,
+              method: "GET",
+              data: {},
+            })
+            .done(function(response) {
+              
+              $.each(response, function(index, val) {
+                    var selected = '';
+                    if(val.id == doctor_id){
+                        selected = 'selected';
+                    }
+
+                    data+='<option value="'+(val.id)+'" '+(selected)+'>'+(val.name)+'</option>';
+              });
+
+              $('#doctor_id').html(data).change();
+            });
+        }else{
+            $('#doctor_id').html(data).change();
+        }  
+    }
+
+    function getDoctorDetails(){
+        $('#doctor_details').html('').hide();
+        var doctor_id=$('#doctor_id').val();
+        if(parseInt(doctor_id) > 0){
+            $.ajax({
+                url: base_url+"/get-doctor-details/"+doctor_id,
+                method: "GET",
+                data: {},
+            })
+            .done(function(response) {
+               $('#doctor_details').html(response).show(); 
+            });
+        }
+    }  
+
+    function checkAgreed() {
+        if($("#agree").is(":checked")) {
+            $('#appointment_submit_btn').prop('disabled',false);
+        }else{
+            $('#appointment_submit_btn').prop('disabled',true);
+        }
+    }
+</script>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-3.3.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://populardiagnostic.com/booking/public/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
+
+<script src="https://populardiagnostic.com/booking/public/js/jquery-confirm.min.js"></script>
+<script src="https://populardiagnostic.com/booking/public/js/frontend/main.js"></script>
+
+<script type="text/javascript">
+  $('input[type=text]').attr('autocomplete','off');
+  $('input[type=number]').attr('autocomplete','off');
+  $('.chosen').select2();
+  
+  $('#datepicker').datepicker({
+    startDate: new Date(),
+  });
+  $('#dob').datepicker();
+  
+  $('.date').datepicker({
+     format: 'yyyy-mm-dd'
+  });
+  
+  $('#example').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+          'print', 'pdf','excel'
+      ],
+      responsive: true
+  });
+  
+  $(document).ready(function(){
+      $('.buttons-print').addClass('btn-primary').html('<i class="fa fa-print"></i>');
+      $('.buttons-pdf').addClass('btn-info').html('<i class="fa fa-file-pdf-o"></i>');
+      $('.buttons-excel').addClass('btn-success').html('<i class="fa fa-file-excel-o"></i>');
+  });
+
+  getLocation();
+  function getLocation() {
+    $.ajax({
+      url: "https://populardiagnostic.com/booking/geolocation",
+      type: 'GET',
+      data: { latitude: "1.352",longitude: "103.8198" },
+    })
+    .done(function(response){
+      console.log(response);
+    });
+    
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position){
+        $.ajax({
+          url: "https://populardiagnostic.com/booking/geolocation",
+          type: 'GET',
+          data: {latitude: position.coords.latitude,longitude: position.coords.longitude },
+        })
+        .done(function(response){
+          console.log(response);
+        });
+      });
+    }
+  }
+</script>
+</body>
+</html>
+
+
+    
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
+{% endblock body %}

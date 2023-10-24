@@ -1,0 +1,320 @@
+z
+
+
+{% extends 'base.html' %}
+{% block title %}Indoor patient{% endblock title %}
+{% block body %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(HMS) Hospital Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+
+
+    <link href="../assets/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <!-- Responsive datatable examples -->
+    <link href="../assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+    <!-- jvectormap -->
+    <link href="../assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    <link href="https://selectize.github.io/selectize.js/css/selectize.default.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+
+</head>
+<style>
+    .proclinic-bg.main {
+        display: none;
+    }
+
+    a.navbar-brand.arrow_style span {
+        color: #ffffff;
+        background: black;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px 0;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="wrapper">
+
+        <!DOCTYPE html>
+<html lang="en">
+
+           <div class="container-fluid">
+
+                <div class="row">
+                    <!-- Widget Item -->
+                                        <div class="col-md-12">
+                        <div class="widget-area-2 proclinic-box-shadow">
+                            <h3 class="widget-title"><br><br>Patient Admission Form</h3><br><br>
+                            <form action=""class="form-horizontal form-material mb-0" id="patient_allotment_form" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                    <input type="hidden" name="request_user_id" value="1">
+                                    <input type="hidden" name="content" value="indoor_allotment">
+                                    <input type="hidden" name="get_patient_id" id="get_patient_id" value="">
+                                    <div class="form-group col-md-5">
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                               
+                                                <div class="row">
+                                                    
+                                                    <div class="col-md-4"><a href="/HomePatient" class="btn btn-success ">Online Doctor</a></div> <div class="col-md-5"><a href="/OutdoorDoctor" class="btn btn-success ">Outdoor Appointment</a></div><div class="col-md-5"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                          <div class="form-group col-md-4">
+                                                <input type="text" placeholder="Patient ID" class="form-control" id="inbdoor_treatment_patient_id" name="indoor_treatment_patient_id">
+                                            </div>
+
+
+                                            <div class="form-group col-md-8">        
+                                                <input type="text" placeholder="Patient Name" class="form-control" id="patient_name" name="patient_name">
+                                            </div>
+                                            
+
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="form-group col-md-4">
+                                                <select id="patient_gender" class="form-control " name="patient_gender" placeholder="Pick a Gender...">
+                                                    <option value="">Select Gender...</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-3">
+                                                <input type="text" placeholder="Patient Age" class="form-control" id="patient_age" name="patient_age" required>
+                                            </div>
+                                            <div class="form-group col-md-5">
+                                                <input type="text" placeholder="Patient Phone" class="form-control" id="patient_phone" name="patient_phone">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <table id="datatable1" class="table dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                              <th>Room Type</th>
+                                                <th>Room No<i class="text-danger"> * </i></th>
+                                            
+                                                <th>Room Price</th>
+                                                <th>Entry Time<i class="text-danger"> * </i></th>
+                                                <th>Discharge Time<i class="text-danger"> * </i></th>
+                                                <th>Total Bill</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="datatable1_body">
+                                            <tr>
+                                              
+
+
+                                                <td>
+                                                    {% comment %} <input type="text" class="form-control indoor_bed_category_name" placeholder="Bed Category" id="indoor_bed_category_name" name="indoor_bed_category_name[]" required> {% endcomment %}
+
+                                                    <div class="form-group col-md-16">
+                                                      <select id="indoor_bed_category_name" class="form-control indoor_bed_category_name " name="indoor_bed_category_name" placeholder="Pick a room">
+                                                      <option value="">Select room</option>
+                                                              <option value="male">Non AC Cabin</option>
+                                                              <option value="female">AC Cabin</option>
+                                                              <option value="other">VIP Cabin</option>
+                                                              </select>
+                                                    </div>
+
+
+
+                                                  </td>
+                                                  <td>
+                                                    <select id="indoor_patient_bed_bed_id" class="form-control indoor_patient_bed_bed_id" name="indoor_patient_bed_bed_id" placeholder="Pick a Service..." onchange="changeDataBed(this);" required>
+                                                        <option value="">Select a Bed...</option>
+                                                        <option value="2">201</option><option value="3">301</option><option value="4">401</option>                                                    </select>
+                                                </td>
+
+                                                <td>
+                                                    <input type="number" class="form-control indoor_bed_price" placeholder="Price" id="indoor_bed_price" name="indoor_bed_price" required>
+                                                </td>
+
+                                                <td>
+                                                    <input type="datetime-local" class="form-control indoor_patient_bed_entry_time" placeholder="Entry time" id="indoor_patient_bed_entry_time" name="indoor_patient_bed_entry_time" onchange="changeDataBed(this);" required>
+                                                </td>
+
+                                                <td>
+                                                    <input type="datetime-local" class="form-control indoor_patient_bed_discharge_time" placeholder="Discharge time" id="indoor_patient_bed_discharge_time" name="indoor_patient_bed_discharge_time" onchange="changeDataBed(this);" required>
+                                                </td>
+                                                <td>
+                                                  <input type="number" class="form-control bed_total_bill" placeholder="Total Bill" id="bed_total_bill" name="bed_total_bill" required>
+                                               </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                    <table id="datatable2" class="table dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Doctor Name<i class="text-danger"> * </i></th>
+                                                <th>Specialization<i class="text-danger"> * </i></th>
+                                                <th>Visit Fee</th>
+                                                <th>Total Bill</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="datatable2_body">
+                                            <tr>
+                                                <td>
+                                                    <select id="indoor_patient_doctor_doctor_id" class="form-control indoor_patient_doctor_doctor_id" name="indoor_patient_doctor_doctor_id" placeholder="Pick a Service..." onchange="changeDataDoctor(this);" required>
+                                                        <option value="">Select a Doctor...</option>
+                                                        <option value="5">Assoc.Prof.Dr.Johurul Hoque</option><option value="6">Dr.Muhammad Saker</option><option value="7">Dr.Kazi Sazzad Hossain</option><option value="8">Dr.Marufur Rahman Talha</option><option value="9">Towhidul Islam</option><option value="10">Mst.Kajal REkha</option><option value="11">Mst.Kajal Rekha</option>                                                    </select>
+                                                </td>
+
+                                                <td>
+                                                    {% comment %} <input type="text" class="form-control doctor_specialization" placeholder="Doctor Specialization" id="doctor_specialization" name="doctor_specialization" required > {% endcomment %}
+                                                    <div class="input-group">
+                                                        <label class="input-group-addon"></label>
+                                                        <select name="doctor_specialization" class="form-control chosen" id="doctor_specialization" onchange="getDoctor()" required>
+                                                            <option value="0">Doctor Specialization</option>
+                                                            <option value="Medicine" >Medicine</option>
+                                                            <option value="ortho" >ortho</option>
+                                                            <option value="cardiac" >cardiac</option>
+                                                            <option value="Bone" >Bone</option>
+                                                            <option value="Cell" >Cell</option>
+                                                            <option value="gaino" >gaino</option>
+                                                                                </select>
+                                                        </select>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <input type="number" class="form-control doctor_visit_fee" placeholder="Fee" id="doctor_visit_fee" name="doctor_visit_fee"  required>
+                                                </td>
+
+                                                <td>
+                                                    <input type="number" class="form-control doctor_total_bill" placeholder="Bill" id="doctor_total_bill" name="doctor_total_bill"  required>
+                                                </td>
+
+                                    
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                    <table id="datatable3" class="table dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Admission Charge<i class="text-danger"> * </i></th>
+                                                <th>Amount</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="datatable3_body">
+                                            <tr>
+                                                <td>
+                                                    <select id="indoor_service_id" class="form-control indoor_service_id" name="indoor_service_id" placeholder="Pick a Service..." onchange="changeDataService(this);" required>
+                                                        <option value="">Select a service...</option>
+                                                        <option value="183">admission</option><option value="184">VIP Admission</option>                                                    </select>
+                                                </td>
+
+                                                <td>
+                                                    <input type="number" class="form-control indoor_service_rate" placeholder="Fee" id="indoor_service_rate" name="indoor_service_rate" required>
+                                                </td>
+
+
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                    <div class="form-group col-md-4">
+                                        <label for="indoor_treatment_total_bill">Total Bill</label>
+                                        <input type="number" placeholder="Total Bill" class="form-control" id="indoor_treatment_total_bill" name="indoor_treatment_total_bill" >
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="indoor_treatment_discount_pc">Discount %</label>
+                                        <input type="number" min="0" max="100" placeholder="Discount" class="form-control" id="indoor_treatment_discount_pc" name="indoor_treatment_discount_pc" onchange="update_total_bill();" value="0" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="indoor_treatment_total_bill_after_discount">In Total Bill</label>
+                                        <input type="number" placeholder="In Total Bill" class="form-control" id="indoor_treatment_total_bill_after_discount" name="indoor_treatment_total_bill_after_discount" >
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="indoor_treatment_total_paid">Paid<i class="text-danger"> * </i></label>
+                                        <input type="number" placeholder="Total Paid" class="form-control" onchange="update_total_bill();" id="indoor_treatment_total_paid" name="indoor_treatment_total_paid" required>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="indoor_treatment_total_due">Due</label>
+                                        <input type="number" placeholder="Total Due" class="form-control" id="indoor_treatment_total_due" name="indoor_treatment_total_due" value="0">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="indoor_treatment_payment_type">Payment Type<i class="text-danger"> * </i></label>
+                                        <select class="form-control" id="indoor_treatment_payment_type" name="indoor_treatment_payment_type" required>
+                                            <option value="">Select Payment Type</option>
+                                            <option value="check">Check</option>
+                                            <option value="card">Card</option>
+                                            <option value="cash">Cash</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="indoor_treatment_payment_type_no">Card/Check No</label>
+                                        <input type="text" placeholder="Card/Check No" class="form-control" id="indoor_treatment_payment_type_no" name="indoor_treatment_payment_type_no">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="indoor_treatment_note">Note</label>
+                                        <input type="text" placeholder="Note" class="form-control" id="indoor_treatment_note" name="indoor_treatment_note">
+                                    </div>
+                                    <div class="form-group col-md-9 mb-9">
+                                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+              </body>
+
+
+
+<script>
+    $(document).ready(function() {
+        $('#select-patient').selectize({
+            sortField: 'text'
+        });
+    });
+</script>
+
+</html>
+
+{% endblock body %}

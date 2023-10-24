@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}House{% endblock title %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logged in user</title>
+  <style>
+    h1 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+
+  
+      body {
+        background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .my_bg h1 {
+        color: #ffffff;
+      }
+      .my_bg {
+          background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg');
+          background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      height:100vh;
+      z-index: 1;
+        }
+        .my_bg::before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          content: "";
+          background: black;
+          opacity: .5;
+          z-index: -1;
+      }
+      </style>
+
+</head>
+<body>
+<div class="my_bg">
+  <br>
+  
+
+    <h1><br><br><br>
+    <h1><br><a class ="btn btn-lg btn-info" href="/patient">Patient Login</a><br><nr><br>
+    <br><a class ="btn btn-lg btn-success" href="/doctor"> Doctor Login</a><br><nr><br>
+    <br><a class ="btn btn-lg btn-info" href="/addmin">Admin Login</a><br><nr>
+      
+  
+ 
+  {% comment %} <a href="/HomePatient">Get appointment</a> {% endcomment %}
+    </div>
+</body>
+{% endblock body %}
+
+{% comment %} {%else%}
+{%include 'patient.html'%}
+{% endif %}
+{%endblock content%}
+</html>
+ {% endcomment %}
+ 

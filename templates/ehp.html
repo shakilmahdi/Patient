@@ -1,0 +1,26 @@
+{% extends 'pbase.html' %}
+{% block title %}Outdoor{% endblock title %}
+{% block body %}
+
+<form class = "my-4" action="/hpPage">    
+    <div class = "input-group mb-3">
+        <input type="text" autocomplete="off" name="q" calss= "form-control form-control-1g" placeholder="ID" required/>
+        <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Enter</button>
+    </div>
+{% comment %} <div class="form-group col-md-2">
+    <label for="patient_id">Patient ID<i class="text-danger"> * </i></label>
+    <input type="text" placeholder="Patient ID" class="form-control" id="patient_id" name="patient_id" >
+</div>
+<div class="form-group col-md-2">
+    <label for="phone">Phone<i class="text-danger"> * </i></label>
+    <input type="text" placeholder="Phone" onchange="phoneOnChange(this.value)" class="form-control" id="patient_phone" name="patient_phone">
+</div>
+<div class="form-group col-md-2">
+    <label for="patient_national_ID">National ID<i class="text-danger"> * </i></label>
+    <input type="text" placeholder="" class="form-control" id="patient_national_ID" name="patient_national_ID">
+</div>
+<br>
+<a class ="btn btn-sm btn-success" href="/hplist"> Enter</a><br>
+<br> {% endcomment %}
+
+{% endblock body %}

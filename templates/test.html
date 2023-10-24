@@ -1,0 +1,337 @@
+
+{% extends 'pbase.html' %}
+{% block title %}Outdoor{% endblock title %}
+{% block body %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<style>
+    .proclinic-bg.main {
+        display: none;
+    }
+
+    a.navbar-brand.arrow_style span {
+        color: #ffffff;
+        background: black;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px 0;
+        text-align: center;
+    }
+</style><nav id="sidebar" class="proclinic-bg">
+
+    
+<script>
+    function myFunction(e) {
+        var elems = document.querySelectorAll(".active");
+        [].forEach.call(elems, function(el) {
+            el.classList.remove("active");
+        });
+        e.target.class = "active";
+    }
+</script>
+
+        <div id="content">
+
+<!-- Required datatable js -->
+
+
+<script>
+    $(document).ready(function() {
+        var links = $('ul#sidebar-nav li').children();
+        $.each(links, function(key, value) {
+            if (value.href == document.URL) {
+                $(this).parent().parent().addClass('show');
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script>
+<script>
+    let hidden = false;
+    $(".navbar-brand").click(function() {
+        $(".proclinic-bg").toggleClass("main");
+        if ($('.proclinic-bg').hasClass('main')) {
+            $(".icon").toggleClass("ti-arrow-left");
+            $(".icon").toggleClass("ti-arrow-right");
+        } else {
+            $(".icon").toggleClass("ti-arrow-left");
+            $(".icon").toggleClass("ti-arrow-right");
+        }
+    });
+
+    function logout() {
+        jQuery.ajax({
+            type: 'POST',
+            url: '../scripts/clear_session.php',
+            cache: false,
+            //dataType: "json", // and this
+            data: {},
+
+            success: function(response) {
+                window.open("login.php", "_self");
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                //console.log(textStatus, errorThrown);
+                alert("alert : " + errorThrown);
+            }
+        });
+
+    }
+</script>   
+<script type="text/javascript">
+    $(function(){
+        var dtToday = new Date();
+     
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate()+2;
+        var year = dtToday.getFullYear();
+        if(month < 10)
+            month = '0' + month.toString();
+        if(day < 10)
+         day = '0' + day.toString();
+        var maxDate = year + '-' + month + '-' + day;
+        $('#patient_date').attr('min', maxDate);
+    });
+    </script>
+    <script type="text/javascript">
+      $(function(){
+          var dtToday = new Date();
+       
+          var month = dtToday.getMonth() + 1;
+          var day = dtToday.getDate()+2;
+          var year = dtToday.getFullYear();
+          if(month < 10)
+              month = '0' + month.toString();
+          if(day < 10)
+           day = '0' + day.toString();
+          var maxDate = year + '-' + month + '-' + day;
+          $('#patient_date').attr('max', maxDate);
+      });
+      </script>         
+    <div class="container-fluid">
+
+
+                <div class="row">
+                    <!-- Widget Item -->
+                    <div class="col-md-12">
+                        <div class="widget-area-2 proclinic-box-shadow">
+                            <h3 class="widget-title"><br><br>Home Patient Form </h3><br><br>                                      
+                            <form action="" class="form-horizontal form-material mb-0" id="patient_form" method="post" enctype="multipart/form-data">
+                            <div class="form-group row"> 
+                                <div class="form-group col-md-2">
+                                    <label for="patient_type">Patient Type<i class="text-danger"> * </i></label>
+                                    <input type="text" placeholder="Patient Type" class="form-control" id="patient_type" name="patient_type" readonly>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="patient_id">Patient ID<i class="text-danger"> * </i></label>
+                                    <input type="text" placeholder="Patient ID" class="form-control" id="patient_id" name="patient_id" readonly>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="patient_date">Registration Date<i class="text-danger"> * </i></label>
+                                    <input type="date" class="form-control" placeholder="date" id="patient_date" name="patient_date" required>
+                                </div>
+                            </div>   
+                                <div class="form-row">
+                                    <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                    <input type="hidden" name="request_user_id" value="1">
+                                    <input type="hidden" name="content" value="patient">
+                                    <input type="hidden" name="patient_status" value="active">
+                                  
+                                    <div class="form-group col-md-2">
+                                        <label for="patient-name">Patient Name<i class="text-danger"> * </i></label>
+                                        <input type="text" class="form-control" placeholder="Patient name" id="patient_name" name="patient_name" required>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="gender">Gender<i class="text-danger"> * </i></label>
+                                        <select class="form-control" id="patient_gender" name="patient_gender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-2">
+                                        <label for="age">Age <i class="text-danger"> * </i></label>
+                                        <input type="text" placeholder="Age" class="form-control" id="patient_age" name="patient_age" required>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="padding: 20px;">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="phone">Phone<i class="text-danger"> * </i></label>
+                                                    <input type="text" placeholder="Phone" onchange="phoneOnChange(this.value)" class="form-control" id="patient_phone" name="patient_phone">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="email">Email</label>
+                                                    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="email" class="form-control" id="patient_email" name="patient_email">
+                                                </div>
+                                            
+                                                <div class="form-group">
+                                                    <label for="doctor_id">Doctor</label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                                        
+                                                                <select id="doctor_id" class="form-control indoor_patient_doctor_doctor_id" name="ap_doctor" placeholder="Pick a Service..." onchange="changeDataDoctor(this);" >
+                                                                    <option value="">Select a Doctor...</option>
+                                                                    <option value="5">Assoc.Prof.Dr.Johurul Hoque</option><option value="6">Dr.Muhammad Saker</option><option value="7">Dr.Kazi Sazzad Hossain</option><option value="8">Dr.Marufur Rahman Talha</option><option value="9">Towhidul Islam</option><option value="10">Mst.Kajal REkha</option><option value="11">Mst.Kajal Rekha</option>                                                    </select>
+                                                          
+                                                        </div>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="gender">Blood Group<i class="text-danger"> * </i></label>
+                                                    <select class="form-control" id="patient_blood_group" name="patient_blood_group">
+                                                        <option value="">Select Blood Group</option>
+                                                        <option value="A+">A+</option>
+                                                        <option value="B+">B+</option>
+                                                        <option value="O+">O+</option>
+                                                        <option value="AB+">AB+</option>
+                                                        <option value="A-">A-</option>
+                                                        <option value="B-">B-</option>
+                                                        <option value="O-">O-</option>
+                                                        <option value="AB-">AB-</option>
+                                                        <option value="not tested">Not Tested</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="patient_national_ID">National ID<i class="text-danger"> * </i></label>
+                                                    <input type="text" placeholder="National ID" class="form-control" id="patient_national_ID" name="patient_national_ID">
+                                                </div>
+                                             
+                                                {% comment %} <div class="form-group col-md-12">
+                                                    <label for="exampleFormControlTextarea1">Symtomps</label>
+                                                    <textarea placeholder="Symtomps" class="form-control" id="patient_description" name="patient_description" rows="3"></textarea>
+                                                </div> {% endcomment %}
+                                                <div class="form-group col-md-12">
+                                                    <label for="exampleFormControlTextarea1">Address<i class="text-danger"> * </i></label>
+                                                    <textarea placeholder="Address" class="form-control" id="patient_address" name="patient_address" rows="3"></textarea>
+                                                </div>
+                                              
+                                                <div class="mb-3">
+                                                    <label for="formFile" class="form-label">Report(image/Pdf)</label>
+                                                    <input class="form-control" type="file" id="formFile" name="r_file">
+                                                </div>
+                                                
+                                                {% comment %} <div>
+                                                    <label for="r_file" class="form-label">Large file input example</label>
+                                                    <input class="form-control form-control-lg" id="r_file" type="file" name="r_file">
+                                                  </div> {% endcomment %}
+                                                <div class="form-group col-md-12">
+                                                    <label for="exampleFormControlTextarea1">Report Description</label>
+                                                    <textarea placeholder="Description" class="form-control" id="report_description" name="report_description" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% comment %} <div class="col-md-6" style="background-color: #f9f5f5;padding: 20px;border-radius: 10px;">
+                                            <div class="container-fluid">
+
+                                                <div class="row">
+                                                    <!-- Widget Item -->
+                                                    <div class="col-md-12">
+                                                        <div class="widget-area-2 proclinic-box-shadow">
+                                                            <h3 class="widget-title">Add Report</h3>
+                                                           
+                                                                <div class="form-row">
+                                                                    <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                                                    <input type="hidden" name="request_user_id" value="1">
+                                                                    <input type="hidden" name="content" value="outdoor_service">                               
+                                                                 
+                                                                </div>
+                                
+                                                                    
+                                                                    {% comment %} <div>
+                                                                        <label for="report">Report(image/Pdf)<i class="text-danger"> * </i></label>
+                                                                        <input type="file" class="form-control" placeholder="report_file" id="outdoor_service_name" name="report_file" >
+                                                                    </div> {% endcomment %}
+                                                                    {% comment %} <div class="mb-3">
+                                                                        <label for="report_file" class="form-label">Report(image/Pdf)</label>
+                                                                        <input class="form-control form-control-sm" id="report_file" type="file" name="report_file" >
+                                                                      </div> {% endcomment %}
+                                                                      
+                                                                    
+                                                                   
+                                                                {% comment %} </div>
+                                                                   
+                                                                </div>
+                                                        
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Widget Item -->
+                                                </div>
+                                            </div>
+                                            <div>  {% endcomment %}
+                                
+                                </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-md-6 mb-3">
+                                        <button type="submit" class="btn btn-primary btn-lg">Submit</button><br><br>  <a class="btn btn-primary btn-danger" href="/logout">logout</a><br><br>
+
+
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            <div id="loader"></div>
+                        </div>
+                    </div>
+                    <!-- /Widget Item -->
+                </div>
+              
+            </div>
+            <div>
+
+            </div>
+            
+</html>
+
+<script>
+    document.getElementById("patient_type").value = "HomePatient";
+  </script>
+
+  <script>
+    document.getElementById("patient_id").value = count()+1;
+  </script>
+ 
+  <script>
+    let currentDate = new Date();
+    let time ="HP"+currentDate.getFullYear()+"" +currentDate.getDay()+""+currentDate.getHours() + "" + currentDate.getMinutes() + "" + currentDate.getSeconds()+""+currentDate.getMilliseconds();
+    console.log(time);
+    console.log(currentDate)
+    document.getElementById('patient_id').value = time;
+    </script>
+  <script>
+  function validateForm() {
+    var patient_emergency_name = document.getElementById("patient_emergency_name").value;
+    if (patient_emergency_name == "") {
+      document.getElementById("nameError").innerHTML = "Name is required";
+      return false;
+    }
+    return true;
+  }
+  </script>
+  
+
+
+{% endblock body %}
+

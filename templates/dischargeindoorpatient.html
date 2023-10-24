@@ -1,0 +1,425 @@
+{% extends 'abase.html' %}
+{% block title %}result{% endblock title %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Patient Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+
+</head>
+<style>
+    .proclinic-bg.main {
+        display: none;
+    }
+
+    a.navbar-brand.arrow_style span {
+        color: #ffffff;
+        background: black;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px 0;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="wrapper">
+
+        <!DOCTYPE html>
+<html lang="en">
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(HMS) Hospital Management System</title>
+  
+<style>
+    .proclinic-bg.main {
+        display: none;
+    }
+
+    a.navbar-brand.arrow_style span {
+        color: #ffffff;
+        background: black;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px 0;
+        text-align: center;
+    }
+</style>
+<script>
+    function myFunction(e) {
+        var elems = document.querySelectorAll(".active");
+        [].forEach.call(elems, function(el) {
+            el.classList.remove("active");
+        });
+        e.target.class = "active";
+    }
+</script>
+
+<!-- <script>
+    jQuery(function($) {
+        $('.menu ul li a').filter(function() {
+            var locationUrl = window.location.href;
+            var currentItemUrl = $(this).prop('href');
+
+            return currentItemUrl === locationUrl;
+        }).parent('li').addClass('active');
+    });
+</script> -->
+        <div id="content">
+
+      
+
+<!-- <div class="row no-margin-padding">
+				<div class="col-md-6">
+					<h3 class="block-title">Quick Statistics</h3>
+				</div>
+				<div class="col-md-6">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="index.php">
+								<span class="ti-home"></span>
+							</a>
+						</li>
+						<li class="breadcrumb-item active">Dashboard</li>
+					</ol>
+				</div>
+	</div> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function() {
+        var links = $('ul#sidebar-nav li').children();
+        $.each(links, function(key, value) {
+            if (value.href == document.URL) {
+                $(this).parent().parent().addClass('show');
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script><script>
+    let hidden = false;
+    $(".navbar-brand").click(function() {
+        $(".proclinic-bg").toggleClass("main");
+        if ($('.proclinic-bg').hasClass('main')) {
+            $(".icon").toggleClass("ti-arrow-left");
+            $(".icon").toggleClass("ti-arrow-right");
+        } else {
+            $(".icon").toggleClass("ti-arrow-left");
+            $(".icon").toggleClass("ti-arrow-right");
+        }
+    });
+
+    function logout() {
+        jQuery.ajax({
+            type: 'POST',
+            url: '../scripts/clear_session.php',
+            cache: false,
+            //dataType: "json", // and this
+            data: {},
+
+            success: function(response) {
+                window.open("login.php", "_self");
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                //console.log(textStatus, errorThrown);
+                alert("alert : " + errorThrown);
+            }
+        });
+
+    }
+</script>            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget-area-2 proclinic-box-shadow text-600">
+                            <!-- <h3 class="widget-title">Patient Release</h3> -->
+                            <!-- Widget Item -->
+                            <!-- <p>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="indoor_Allotment multiCollapseExample2">Close all</button>
+                            </p> -->
+
+                            <div id="print_invoice">
+                                <div class="row ">
+                                    <div class="col-12  justify-content-center">
+                                      
+
+                                        <div class=" text-center text-600">
+                                            <b><br><br><br><br>
+                                            <p style="font-size: 18px; margin:0px; padding:0px;"><h5><b>MTC</b></h5></p>
+                                            <p style="font-size: 14px; margin:0px; padding:0px;">House #56, Road #03, Dhaka Real State, Kaderabad housing,Mohammadpur, Dhaka-1207</p>
+                                            <p style="font-size: 14px; margin:0px; padding:0px;">For Serial: +88 01844080671 , +88 028101496, +88 01844 080 675, +88 01844 080 676</p></b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center" style="margin-top: 10px;">
+                                    <h4 style="display: inline;border: 1px solid black;padding: 5px 20px;margin-top: 15px;margin-left: 10px;">Final Bill</h4>
+                                </div>
+                                <div class="row  mt-4 mb-4">
+                                    <div class="col-md-8">
+                                        <p class="mb-0"><b>Patient Name :  </b>{{IndoorAdmission.patient_name}}</p>
+                                        <p class="mb-0"><b>Patient ID : </b> {{IndoorAdmission.indoor_treatment_patient_id}}</p>
+                                        <p class="mb-0"><b>Patient Age :  </b>{{IndoorAdmission.patient_age}}</p>
+                                        <!-- <p class="mb-0">Consultant Name : 1</p> -->
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <p class="mb-0"><b>Admission ID :  </b>{{IndoorAdmission.indoor_treatment_patient_id}}</p>
+                                        <p class="mb-0"><b>Admission Date :  </b>{{IndoorAdmission.indoor_patient_bed_entry_time}}</p>
+                                        <p class="mb-0"><b>Bill up to Date : </b> {{IndoorAdmission.indoor_patient_bed_discharge_time}}</p>
+                                    </div>
+                                </div>
+
+                                <table class="Report_table border" style="width: 100%;">
+                                    <thead>
+                                        {% comment %} <tr>
+
+                                            <!-- <td>Invoice</td> -->
+                                            <td style="width: 70%;"><b>Details </b></td>
+                                            <td>Qty </b></td>
+                                            <td>Per Unit </b></td>
+                                            <td class="text-right"><b>Total Amount </b></td>
+
+                                        </tr> {% endcomment %}
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                           
+                                            <td class="text-center border"><b>Admission fee</b></td>
+                                            <td>{{ IndoorAdmission.outdoor_service_rate }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            
+                                            <td class="text-center border"><b>Accomodation Cost</b> (   {{IndoorAdmission.indoor_patient_bed_entry_time}} to {{IndoorAdmission.indoor_patient_bed_discharge_time}} )</td>
+                                            <td> {{ IndoorAdmission.bed_total_bill }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            
+                                            <td class="text-center border"><b>Doctor fee</b></td>
+                                            <td>{{ IndoorAdmission.doctor_total_bill }}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center border"><b>Total</b></td>
+                                            
+                                            <td>{{ IndoorAdmission.indoor_treatment_total_bill }}</td>
+                                            
+                                        </tr>
+
+                                        <!-- Indoor Admission report -->
+                                        
+                                                {% comment %} <tr class="main_row">
+                                                <td><b>Admission Fee</td>
+                                                <td> {{IndoorAdmission.outdoor_service_rate}} </td>
+                                                    <td> </td>
+                                                    <td class="text-right"></td>
+                                                </tr> {% endcomment %}
+                                        <!-- Indoor bed report -->
+                                        
+                                                {% comment %} <tr class="main_row">
+                                                <td>Cabin-AC (301)    {{IndoorAdmission.indoor_patient_bed_discharge_time}} to {{IndoorAdmission.indoor_patient_bed_entry_time}}</td>
+                                                <td> Accomodation Cost</td>
+                                                    <td>2500</td>
+                                                    <td class="text-right">2500</td>
+                                                </tr> {% endcomment %}
+
+                                        <!-- Indoor Doctor report -->
+                                        
+                                                {% comment %} <tr class="main_row">
+                                                <td>{{IndoorAdmission.indoor_patient_bed_bed_id}}</td>
+                                                <td>2 </td>
+                                                    <td> - </td>
+                                                    <td class="text-right">600</td>
+                                                </tr> {% endcomment %}
+                                        <!-- Indoor Service report Investigation-->
+                                        
+                                        <!-- Indoor Service report Procedures-->
+                                        
+                                        <!-- Indoor Service report Physiotherapy-->
+                                        
+                                        <!-- Indoor Service report Doctor Visit-->
+                                        
+                                        <!-- Indoor Service report OT-->
+                                        
+
+
+                                        {% comment %} <tr class="main_row">
+                                        <td><b>Service Fee</td>
+                                        <td>-</td>
+                                        
+                                        <td>-</td>
+                                        
+                                        
+                                        <td class="text-right">250</td>
+                                        
+                                        
+                                    </tr> {% endcomment %}
+                                    </tbody>
+                                </table>
+                                <table style="width: 100%;" class="border-top mb-3 Report_table">
+                                    <tr class="main_row">
+                                        <td style="width: 40%;"></td>
+                                        <td style="width: 20%;"></td>
+                                        <td class="text-center border " style="width: 25%;"><b>Gross Amount</td>
+                                        <td class="text-right border ">{{ IndoorAdmission.indoor_treatment_total_bill }}</td>
+                                    </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border"><b>Discount</td>
+                                        <td class="text-right border ">0</td>
+                                    </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border"><b>Advance</td>
+                                        <!-- <td class="text-right border ">45</td> -->
+                                        <td class="text-right border ">0</td>
+                                    </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border"><b>Exemption</td>
+                                        <td class="text-right border ">0</td>
+                                    </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border"><b>Net Payable Amount </b></td>
+                                                                                    <td class="text-right border ">{{ IndoorAdmission.indoor_treatment_total_bill }}</td>
+                                                                            </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border"><b>Net Due Amount </b></td>
+                                        <td class="text-right border ">{{ IndoorAdmission.indoor_treatment_total_bill }}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div>
+                                <form class="form-horizontal form-material mb-0" id="patient_release" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                    <input type="hidden" name="request_user_id" value="1">
+                                    <input type="hidden" name="indoor_treatment_id" value="2">
+                                    <!-- <input type="hidden" name="indoor_treatment_released" value="0"> -->
+                                    <input type="hidden" name="content" value="indoor_allotment">
+                                    <h1 style="margin-top: -60px;"></h1>                                </form>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                    
+                   
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="col-md-3">
+                <div class="widget-area-2 proclinic-box-shadow" style="margin-left: 0px">
+                    
+
+                    <form class="form-horizontal form-material mb-0" id="indoor_treatment_discount" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                        <input type="hidden" name="request_user_id" value="1">
+                        <input type="hidden" name="indoor_treatment_id" value="2">
+                        <input type="hidden" name="content" value="indoor_allotment">
+                        
+                       
+                        
+
+                    </form>
+                </div>
+            </div>
+        </div>
+            </div>
+
+        </div>
+
+      
+<script>
+    $(document).ready(function() {
+        var links = $('ul#sidebar-nav li').children();
+        $.each(links, function(key, value) {
+            if (value.href == document.URL) {
+                $(this).parent().parent().addClass('show');
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script></body>
+
+<script>
+    var spinner = $('#loader');
+
+    function delete_data(indoor_treatment_payment_id) {
+
+
+        if (confirm('Are you sure you want to Delete This Payment?')) {
+            // yes
+            spinner.show();
+            $.ajax({
+                type: 'POST',
+                url: '../apis/delete_indoor_bill_payment.php',
+                cache: false,
+                //dataType: "json", // and this
+                data: {
+                    request_user_id: "1",
+                    token: "7eed57dced1b16ad3ee2bef71138c27f92553b69",
+                    indoor_treatment_payment_id: indoor_treatment_payment_id,
+                    content: "indoor_treatment_payment"
+                },
+                success: function(response) {
+                    // alert(response);
+                    spinner.hide();
+                    var obj = JSON.parse(response);
+                    // alert(obj.message);
+                    //alert(obj.status);
+                    if (obj.status) {
+                        location.reload();
+                        // window.open("patient_treatment_list.php", "_self");
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    spinner.hide();
+                    alert("alert : " + errorThrown);
+                }
+            });
+        } else {
+            // Do nothing!
+            console.log('Said No');
+        }
+    }
+</script>
+<br>
+<br>
+<br>
+
+<div>
+    <button class="btn btn-primary mx-1px text-95" style="float: right;" onclick="print_invoice();">
+        <i class="mr-1 fa fa-print text-white-m1 text-120 w-2"></i>
+        Print
+    </button>
+</div>
+
+
+
+</html>
+{% endblock body %}

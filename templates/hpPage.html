@@ -1,0 +1,109 @@
+{% extends 'pbase.html' %}
+{% block title %}result{% endblock title %}
+{% block body %}
+<head>
+
+    <style>
+        h1 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;}
+    
+      
+          body {
+            background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg');
+          }
+          input[type="text"] {
+            display: none;
+          }
+          </style>
+        
+
+</head>
+
+<br>
+<br>
+  
+    {% block content %}
+    <br>
+ 
+    
+    <div class="row">
+    {% comment %} <form class = "my-4" action="/hplist">    
+        <div class = "input-group mb-3">
+            <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+            <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Search</button>
+        </div> {% endcomment %}
+        <div class="col-md">
+         
+            <div class="card card-body">
+               
+                
+                <table class="table">
+                    <tr>
+
+                        <th>N/A</th>
+                        <th> Patient ID</th>
+                        <th>Patient(Name)</th>
+                        <th>Contact</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Blood Group</th>
+                       
+                        <th>Register Date</th>
+                        <th> Add Report</th>
+                       
+                  
+                    </tr>
+                    {% for vai in  HomePatient %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{vai.patient_id}}</td>
+                        <td>{{vai.patient_name}}</td>
+                        <td>{{vai.patient_phone}}</td>
+                        <td>{{vai.patient_gender}}</td>
+                        <td>{{vai.patient_age}}</td>
+                        <td>{{vai.patient_blood_group}}</td>
+                        <td>{{vai.patient_date}}</td>
+                        <td><a class ="btn btn-success" href="addreport/{{ vai.id }}">Add report </a></td>
+                       
+                        <td><a class ="btn btn-success" href="HomePatientAppointment/{{ vai.id }}">Online Appointment </a></td>
+                        
+                        <td>
+                            <form class = "my-1" action="/report">
+                            <div class = "input-group mb-1">
+                                <input type="text" name="q" calss= "form-control form-control-1g dnone"   value ="{{vai.patient_id}}" readonly placeholder="Search"/>
+                                <button class ="btn btn-success btn-1g" type="submit" id="button-addon2">See Your Rrport</button>
+                            </div>
+                        </td>
+                           {% comment %} <th> <a class ="btn btn-sm btn-success" href="Online_appointment">Appointment</th>
+                            <th><a class ="btn btn-sm btn-info"href="/report">Report</th> {% endcomment %}
+                    </tr>
+                    
+                    {% endfor %}
+                    
+                </table>
+            </div>
+      
+        </div>
+    </div>
+</form>
+<br>
+<br><br>
+
+<h1>
+    <br>
+    {% comment %} <a class ="btn btn-sm btn-success" href="HomePatientAppointment">Take Online Appointment</a><br><br>
+       <a class ="btn btn-sm btn-info" href="/report">Report and Prescription</a><br> {% endcomment %}
+       <br><a class ="btn btn-sm btn-info" href="/patient">Go back</a><br>
+
+</h1>   
+  
+
+
+{% endblock content%}    
+              
+
+
+
+
+{% endblock body %}

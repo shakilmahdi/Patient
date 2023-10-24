@@ -1,0 +1,140 @@
+{% extends 'dbase.html' %}
+{% block title %}House{% endblock title %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logged in user</title>
+  <style>
+    .my_bg h1 {
+        color: #ffffff;
+      }
+      .my_bg {
+          background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg');
+          background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      height:100vh;
+      z-index: 1;
+        }
+        .my_bg::before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          content: "";
+          background: black;
+          opacity: .5;
+          z-index: -1;
+      }
+        
+    h1 {text-align: center;}
+    </style>
+</head>
+<body>
+<div class="my_bg">    
+    <br>
+    {% comment %} WellCome to Home Patient Module<br> {% endcomment %}
+    <form class = "my-4" action="/dhousePatient">
+        <div class = "input-group mb-3">
+            <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+            <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Search</button>
+        </div>
+  
+    {% block content %}
+    <br>
+    {% comment %} <div class ="row">
+        <div class ="col">
+            <div class = "card card-body">
+                <form method="post">
+                    {{myFilter.form}}
+  
+                <button class ="btn btn-primary" type-"submit">
+                    Search</button>
+                </form>
+            </div>
+        </div>
+    </div> {% endcomment %}
+    <form method ="POST">
+        {% comment %} from:<input type="date" name="fromdate"/>
+        To : <input type="date" name="todate"/>
+        <input type="submit" value="Search"/> {% endcomment %}
+   
+    <br>
+    <div class="row">
+        <div class="col-md">
+            {% comment %} <div class="card card0body">
+                <a  class ="btn btn-sm btn-success"href="/HomePatient"><h5>Add a New Patient</h5></a>
+                
+            </div> {% endcomment %}
+           
+           
+            <div class="card card-body">
+               
+                
+                <table class="table">
+                    <tr>
+
+                        <th>N/A</th>
+                        <th> Patient ID</th>
+                        <th>Home Patient(Name)</th>
+                        <th>Contact</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                       
+                        <th>Register Date</th>
+                       
+                  
+                    </tr>
+                    {% for vai in  HomePatient %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{vai.patient_id}}</td>
+                        <td>{{vai.patient_name}}</td>
+                        <td>{{vai.patient_phone}}</td>
+                        <td>{{vai.patient_gender}}</td>
+                        <td>{{vai.patient_age}}</td>
+                        <td>{{vai.patient_date}}</td>
+                        <td><a class ="btn btn-success" href="addreport/{{ vai.id }}">Add Prescription </a></td>
+                       
+                        
+                 
+                        {% comment %} <td><a class ="btn btn-sm btn-info" href="update_hp/{{ vai.id }}">Update</a></td> {% endcomment %}
+                        {% comment %} <td><a class ="btn btn-sm btn-danger" href="delete_hp/{{ vai.id }}">delete</a></td> {% endcomment %}
+                        {% comment %} <th> <a class ="btn btn-sm btn-success" href="dOnline_appointment">Appointment</th>
+                            <td>
+                                <a class ="btn btn-sm btn-success" href="/report"> Home-Patient Report</a>
+                            </td> {% endcomment %}
+                        {% comment %} <th><a class ="btn btn-sm btn-success"href="/Online_appointment">Appointment</th> {% endcomment %}
+                           
+                    
+                    </tr>
+                    
+                    {% endfor %}
+                    
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</form>
+{% endblock content%}   
+
+<h1>
+   
+    <br><a class ="btn btn-lg btn-success" href="/report"> Home-Patient Report</a><br><nr>
+     
+    
+    </h1>
+  
+<br><a class ="btn btn-sm btn-info" href="/addmin">Go back</a><br><nr>
+  
+    <br>
+</div>
+</body>
+</html>
+{% endblock body %}

@@ -1,0 +1,49 @@
+<p class="main_color"> Appointment Has confirmed</p>
+
+{% extends 'abase.html' %}
+{% block title %}House{% endblock title %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <style>
+    .main_color {
+        background: black;
+        padding:20px 40px;
+        color: white;
+        font-size: 23px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    h1 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+
+  
+      body {
+        background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg'); 
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      </style>
+  {%block content%}
+
+</head>
+<body>
+
+  
+</body>
+
+<p class="main_color"> Appointment for home patient is Confirm
+    <br> Information has sent over the patient mail
+</p>
+
+{%endblock content%}
+</html>
+{% endblock body %}

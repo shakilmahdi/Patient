@@ -1,0 +1,722 @@
+{% extends 'abase.html' %}
+{% block title %}result{% endblock title %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(HMS) Hospital Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+
+
+    <link href="../assets/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <!-- Responsive datatable examples -->
+    <link href="../assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+    <!-- jvectormap -->
+    <link href="../assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    <link href="https://selectize.github.io/selectize.js/css/selectize.default.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+
+</head>
+<style>
+    .proclinic-bg.main {
+        display: none;
+    }
+
+    a.navbar-brand.arrow_style span {
+        color: #ffffff;
+        background: black;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px 0;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="wrapper">
+
+        <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(HMS) Hospital Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+
+
+    <link href="../assets/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <!-- Responsive datatable examples -->
+    <link href="../assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+    <!-- jvectormap -->
+    <link href="../assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    <link href="https://selectize.github.io/selectize.js/css/selectize.default.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/custom.css">
+
+
+</head>
+<style>
+    .proclinic-bg.main {
+        display: none;
+    }
+
+    a.navbar-brand.arrow_style span {
+        color: #ffffff;
+        background: black;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    #sidebar .sidebar-header {
+        padding: 20px 0;
+        text-align: center;
+    }
+</style>
+<script>
+    function myFunction(e) {
+        var elems = document.querySelectorAll(".active");
+        [].forEach.call(elems, function(el) {
+            el.classList.remove("active");
+        });
+        e.target.class = "active";
+    }
+</script>
+
+<!-- <script>
+    jQuery(function($) {
+        $('.menu ul li a').filter(function() {
+            var locationUrl = window.location.href;
+            var currentItemUrl = $(this).prop('href');
+
+            return currentItemUrl === locationUrl;
+        }).parent('li').addClass('active');
+    });
+</script> -->
+        <div id="content">
+
+      
+
+<!-- <div class="row no-margin-padding">
+				<div class="col-md-6">
+					<h3 class="block-title">Quick Statistics</h3>
+				</div>
+				<div class="col-md-6">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">
+							<a href="index.php">
+								<span class="ti-home"></span>
+							</a>
+						</li>
+						<li class="breadcrumb-item active">Dashboard</li>
+					</ol>
+				</div>
+	</div> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Required datatable js -->
+<script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="../assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="../assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+<script src="../assets/plugins/datatables/jszip.min.js"></script>
+<script src="../assets/plugins/datatables/pdfmake.min.js"></script>
+<script src="../assets/plugins/datatables/vfs_fonts.js"></script>
+<script src="../assets/plugins/datatables/buttons.html5.min.js"></script>
+<script src="../assets/plugins/datatables/buttons.print.min.js"></script>
+<script src="../assets/plugins/datatables/buttons.colVis.min.js"></script>
+<!-- Responsive examples -->
+<script src="../assets/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="../assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+<script src="../assets/plugins/dropify/js/dropify.min.js"></script>
+<script src="../assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+<script src="../assets/plugins/jvectormap/jquery-jvectormap-us-aea-en.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> -->
+<script src="https://selectize.github.io/selectize.js/js/selectize.js"></script>
+<script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.0/jQuery.print.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<script>
+    $(document).ready(function() {
+        var links = $('ul#sidebar-nav li').children();
+        $.each(links, function(key, value) {
+            if (value.href == document.URL) {
+                $(this).parent().parent().addClass('show');
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script><script>
+    let hidden = false;
+    $(".navbar-brand").click(function() {
+        $(".proclinic-bg").toggleClass("main");
+        if ($('.proclinic-bg').hasClass('main')) {
+            $(".icon").toggleClass("ti-arrow-left");
+            $(".icon").toggleClass("ti-arrow-right");
+        } else {
+            $(".icon").toggleClass("ti-arrow-left");
+            $(".icon").toggleClass("ti-arrow-right");
+        }
+    });
+
+    function logout() {
+        jQuery.ajax({
+            type: 'POST',
+            url: '../scripts/clear_session.php',
+            cache: false,
+            //dataType: "json", // and this
+            data: {},
+
+            success: function(response) {
+                window.open("login.php", "_self");
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                //console.log(textStatus, errorThrown);
+                alert("alert : " + errorThrown);
+            }
+        });
+
+    }
+</script>            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="widget-area-2 proclinic-box-shadow text-600">
+                            <!-- <h3 class="widget-title">Patient Release</h3> -->
+                            <!-- Widget Item -->
+                            <!-- <p>
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="indoor_Allotment multiCollapseExample2">Close all</button>
+                            </p> -->
+                                                        <button class="btn btn-primary mx-1px text-95" style="float: right;" onclick="print_invoice();">
+                                <i class="mr-1 fa fa-print text-white-m1 text-120 w-2"></i>
+                                Print
+                            </button>
+
+                            <div id="print_invoice">
+                                <div class="row ">
+                                    <div class="col-12  justify-content-center">
+                                        <div class="float-left">
+                                            <img class="center" src="../assets/images/logo.png" style="height: 60px; display: block; margin-left: auto; margin-right: auto;" alt="logo" class="logo-default">
+                                        </div>
+
+                                        <div class=" text-center text-600">
+                                            <p style="font-size: 18px; margin:0px; padding:0px;">MOMTAJ TRAUMA CENTER</p>
+                                            <p style="font-size: 14px; margin:0px; padding:0px;">House #56, Road #03, Dhaka Real State, Kaderabad housing,Mohammadpur, Dhaka-1207</p>
+                                            <p style="font-size: 14px; margin:0px; padding:0px;">For Serial: +88 01844080671 , +88 028101496, +88 01844 080 675, +88 01844 080 676</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center" style="margin-top: 10px;">
+                                    <h4 style="display: inline;border: 1px solid black;padding: 5px 20px;margin-top: 15px;margin-left: 10px;">Final Bill</h4>
+                                </div>
+                                <div class="row  mt-4 mb-4">
+                                    <div class="col-md-8">
+                                        <p class="mb-0">Patient Name : akash</p>
+                                        <p class="mb-0">Patient ID : 1</p>
+                                        <p class="mb-0">Patient Age : 22</p>
+                                        <!-- <p class="mb-0">Consultant Name : 1</p> -->
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <p class="mb-0">Admission ID : 18102022154153</p>
+                                        <p class="mb-0">Admission Date : 10/18/2022</p>
+                                        <p class="mb-0">Bill up to Date : 10/10/2022</p>
+                                    </div>
+                                </div>
+
+                                <table class="Report_table border" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+
+                                            <!-- <td>Invoice</td> -->
+                                            <td style="width: 70%;">Details</td>
+                                            <td>Qty</td>
+                                            <td>Per Unit</td>
+                                            <td class="text-right">Total Amount</td>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <!-- Indoor Admission report -->
+                                        
+                                                <tr class="main_row">
+                                                <td>Admission Fee</td>
+                                                <td> 1 </td>
+                                                    <td>1000 </td>
+                                                    <td class="text-right">1000</td>
+                                                </tr>
+                                        <!-- Indoor bed report -->
+                                        
+                                                <tr class="main_row">
+                                                <td>Cabin-AC (301)    Oct 17, 2022  - Oct 18, 2022</td>
+                                                <td> 1 </td>
+                                                    <td>2500</td>
+                                                    <td class="text-right">2500</td>
+                                                </tr>
+
+                                        <!-- Indoor Doctor report -->
+                                        
+                                                <tr class="main_row">
+                                                <td>Dr.Marufur Rahman Talha (General Physician)</td>
+                                                <td>2 </td>
+                                                    <td> - </td>
+                                                    <td class="text-right">600</td>
+                                                </tr>
+                                        <!-- Indoor Service report Investigation-->
+                                        
+                                        <!-- Indoor Service report Procedures-->
+                                        
+                                        <!-- Indoor Service report Physiotherapy-->
+                                        
+                                        <!-- Indoor Service report Doctor Visit-->
+                                        
+                                        <!-- Indoor Service report OT-->
+                                        
+
+
+                                        <tr class="main_row">
+                                        <td>Service Fee</td>
+                                        <td>-</td>
+                                        
+                                        <td>-</td>
+                                        
+                                        
+                                        <td class="text-right">250</td>
+                                        
+                                        
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table style="width: 100%;" class="border-top mb-3 Report_table">
+                                    <tr class="main_row">
+                                        <td style="width: 40%;"></td>
+                                        <td style="width: 20%;"></td>
+                                        <td class="text-center border " style="width: 25%;">Gross Amount</td>
+                                        <td class="text-right border ">4350</td>
+                                    </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border">Discount</td>
+                                        <td class="text-right border ">0</td>
+                                    </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border">Advance</td>
+                                        <!-- <td class="text-right border ">45</td> -->
+                                        <td class="text-right border ">45</td>
+                                    </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border">Exemption</td>
+                                        <td class="text-right border ">0</td>
+                                    </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border">Net Payable Amount</td>
+                                                                                    <td class="text-right border ">0</td>
+                                                                            </tr>
+                                    <tr class="main_row">
+                                        <td></td>
+                                        <td></td>
+                                        <td class="text-center border">Net Due Amount</td>
+                                        <td class="text-right border ">4305</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div>
+                                <form class="form-horizontal form-material mb-0" id="patient_release" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                    <input type="hidden" name="request_user_id" value="1">
+                                    <input type="hidden" name="indoor_treatment_id" value="2">
+                                    <!-- <input type="hidden" name="indoor_treatment_released" value="0"> -->
+                                    <input type="hidden" name="content" value="indoor_allotment">
+                                    <h1 style="margin-top: -60px;"></h1>                                </form>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="widget-area-2 proclinic-box-shadow" style="margin-right: 0px">
+                            <h5>Bill Payment</h5>
+
+                            <form class="form-horizontal form-material mb-0" id="indoor_treatment_payment" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                <input type="hidden" name="request_user_id" value="1">
+                                <input type="hidden" name="indoor_treatment_payment_treatment_id" value="2">
+                                <input type="hidden" name="content" value="indoor_payment">
+                                <input type="hidden" name="indoor_treatment_payment_released" value="1">
+                                <div class="form-group">
+                                    <label for="indoor_treatment_payment_details">Payment Details</label>
+                                    <textarea placeholder="Details" class="form-control" id="indoor_treatment_payment_details" name="indoor_treatment_payment_details" required></textarea>
+                                </div>
+                                <div class=" form-group ">
+                                    <label for=" indoor_treatment_payment_amount">Amount</label>
+                                    <input type="numbera" placeholder="Amount" class="form-control" id="indoor_treatment_payment_amount" name="indoor_treatment_payment_amount" required>
+                                </div>
+                                <div class="form-group  mb-3">
+                                    <button type="submit" class="btn btn-success ">Submit</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="widget-area-2 proclinic-box-shadow" style="margin-left: 0px">
+                            <h5>Discount and Exemption</h5>
+
+                            <form class="form-horizontal form-material mb-0" id="indoor_treatment_discount" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                <input type="hidden" name="request_user_id" value="1">
+                                <input type="hidden" name="indoor_treatment_id" value="2">
+                                <input type="hidden" name="content" value="indoor_allotment">
+                                <div class=" form-group ">
+                                    <label for=" indoor_treatment_discount">Discount</label>
+                                    <input type="numbera" placeholder="Amount" class="form-control" id="indoor_treatment_discount" name="indoor_treatment_discount" value="0">
+                                </div>
+                                <div class=" form-group ">
+                                    <label for=" indoor_treatment_exemption">Exemption</label>
+                                    <input type="numbera" placeholder="Amount" class="form-control" id="indoor_treatment_exemption" name="indoor_treatment_exemption" value="0">
+                                </div>
+                                <div class="form-group  mb-3">
+                                    <button type="submit" class="btn btn-success ">Submit</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="widget-area-2 proclinic-box-shadow" style="margin-left: 0px">
+                            <button class="btn btn-primary mx-1px text-95" onclick="print_history();">
+                                <i class="mr-1 fa fa-print text-white-m1 text-120 w-2"></i>
+                                Print
+                            </button>
+                            <div id="print_history">
+
+
+                                <div class="row  mt-2 mb-4">
+                                    <div class="col-md-5">
+                                        <p class="mb-0">Patient Name : akash</p>
+                                        <p class="mb-0">Patient ID : 1</p>
+                                        <p class="mb-0">Patient Age : 22</p>
+                                        <!-- <p class="mb-0">Consultant Name : 1</p> -->
+                                    </div>
+                                    <div class="col-md-7 text-right">
+                                        <p class="mb-0">Admission ID : 18102022154153</p>
+                                        <p class="mb-0">Admission Date : 10/18/2022</p>
+                                        <p class="mb-0">Bill up to Date : 10/10/2022</p>
+                                    </div>
+                                </div>
+                                <table class="Report_table border mb-4 p-4" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <td>Payment history</td>
+                                            <td>Date</td>
+                                            <td class="text-right">Amount</td>
+                                            <td class="text-right">Receipt</td>
+                                        </tr>
+                                    </thead>
+                                                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Required datatable js -->
+<script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="../assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="../assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+<script src="../assets/plugins/datatables/jszip.min.js"></script>
+<script src="../assets/plugins/datatables/pdfmake.min.js"></script>
+<script src="../assets/plugins/datatables/vfs_fonts.js"></script>
+<script src="../assets/plugins/datatables/buttons.html5.min.js"></script>
+<script src="../assets/plugins/datatables/buttons.print.min.js"></script>
+<script src="../assets/plugins/datatables/buttons.colVis.min.js"></script>
+<!-- Responsive examples -->
+<script src="../assets/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="../assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+<script src="../assets/plugins/dropify/js/dropify.min.js"></script>
+<script src="../assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+<script src="../assets/plugins/jvectormap/jquery-jvectormap-us-aea-en.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/highlight.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> -->
+<script src="https://selectize.github.io/selectize.js/js/selectize.js"></script>
+<script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.0/jQuery.print.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<script>
+    $(document).ready(function() {
+        var links = $('ul#sidebar-nav li').children();
+        $.each(links, function(key, value) {
+            if (value.href == document.URL) {
+                $(this).parent().parent().addClass('show');
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script></body>
+
+<script>
+    var spinner = $('#loader');
+
+    function delete_data(indoor_treatment_payment_id) {
+
+
+        if (confirm('Are you sure you want to Delete This Payment?')) {
+            // yes
+            spinner.show();
+            $.ajax({
+                type: 'POST',
+                url: '../apis/delete_indoor_bill_payment.php',
+                cache: false,
+                //dataType: "json", // and this
+                data: {
+                    request_user_id: "1",
+                    token: "7eed57dced1b16ad3ee2bef71138c27f92553b69",
+                    indoor_treatment_payment_id: indoor_treatment_payment_id,
+                    content: "indoor_treatment_payment"
+                },
+                success: function(response) {
+                    // alert(response);
+                    spinner.hide();
+                    var obj = JSON.parse(response);
+                    // alert(obj.message);
+                    //alert(obj.status);
+                    if (obj.status) {
+                        location.reload();
+                        // window.open("patient_treatment_list.php", "_self");
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    spinner.hide();
+                    alert("alert : " + errorThrown);
+                }
+            });
+        } else {
+            // Do nothing!
+            console.log('Said No');
+        }
+    }
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('form#indoor_treatment_payment').on('submit', function(event) {
+            // alert("payment");
+
+            if (confirm('Are you sure you want to add  Payment?')) {
+                spinner.show();
+                event.preventDefault();
+                var formData = new FormData(this);
+                var currentdate = new Date();
+                var datetime = currentdate.getDate().toString() +
+                    (currentdate.getMonth() + 1).toString() +
+                    currentdate.getFullYear().toString() +
+                    currentdate.getHours().toString() +
+                    currentdate.getMinutes().toString() +
+                    currentdate.getSeconds().toString();
+                console.log(datetime);
+                formData.append('outdoor_treatment_invoice_id', datetime);
+
+                $.ajax({
+                    url: '../apis/create_indoor_payment.php',
+                    type: 'POST',
+                    data: formData,
+                    success: function(data) {
+                        // spinner.hide();
+                        var obj = JSON.parse(data);
+                        // alert(obj.message);
+                        // console.log(obj);
+                        if (obj.status) {
+                            // location.reload();
+                            window.open("money_receipt.php?indoor_treatment_payment_id=" + obj.outdoor_service_id, "_self");
+
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert("alert : " + errorThrown);
+                        spinner.hide();
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+            }
+
+        });
+
+
+        $('form#patient_release').on('submit', function(event) {
+            if (confirm('Are you sure you want to release this patient?')) {
+                spinner.show();
+                event.preventDefault();
+
+                var formData = new FormData(this);
+                formData.append('indoor_treatment_released', 1);
+                // alert("release");
+                $.ajax({
+                    url: '../apis/update_indoor_patient_allotment_release.php',
+                    type: 'POST',
+                    data: formData,
+                    success: function(data) {
+                        // alert("success");
+                        //alert(data);
+                        // console.log(data);
+                        // alert(data);
+                        // spinner.hide();
+                        alert("Patient released Successfully");
+                        location.reload();
+                        // var obj = JSON.parse(data);
+                        // alert(obj.message);
+                        // //alert(obj.status);
+                        // if (obj.status) {
+                        //     // alert("Patient released Successfully");
+
+                        //     // window.open("admission_invoice.php?indoor_treatment_id=" + obj.indoor_treatment_id, "_self");
+
+                        // }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert("alert : " + errorThrown);
+                        // spinner.hide();
+                    },
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+            }
+        });
+
+
+        $('form#indoor_treatment_discount').on('submit', function(event) {
+            // if (confirm('Are you sure you want to save the discount?')) {
+            spinner.show();
+            // event.preventDefault();
+
+            var formData = new FormData(this);
+            $.ajax({
+                url: '../apis/update_indoor_patient_allotment_discount.php',
+                type: 'POST',
+                data: formData,
+                success: function(data) {
+                    var obj = JSON.parse(data);
+                    alert(obj.message);
+                    if (obj.status) {
+                        location.reload();
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert("alert : " + errorThrown);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+            // }
+        });
+    });
+</script>
+
+<script>
+    function print_invoice() {
+
+        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        mywindow.document.write('<html><head>');
+        mywindow.document.write("<link href=\"../assets/css/invoice.css\" rel=\"stylesheet\">");
+        mywindow.document.write("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">");
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(document.getElementById('print_invoice').innerHTML);
+        mywindow.document.write('</body></html>');
+        console.log(mywindow.document);
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        setTimeout(function() {
+            mywindow.print();
+            mywindow.close();
+        }, 1000)
+        return true;
+    }
+</script>
+
+<script>
+    function print_history() {
+
+        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+
+        mywindow.document.write('<html><head>');
+        mywindow.document.write("<link href=\"../assets/css/invoice.css\" rel=\"stylesheet\">");
+        mywindow.document.write("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">");
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(document.getElementById('print_history').innerHTML);
+        mywindow.document.write('</body></html>');
+        console.log(mywindow.document);
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        setTimeout(function() {
+            mywindow.print();
+            mywindow.close();
+        }, 1000)
+        return true;
+    }
+</script>
+
+
+
+
+</html>
+{% endblock body %}

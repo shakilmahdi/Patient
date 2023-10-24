@@ -1,0 +1,56 @@
+{% extends 'dbase.html' %}
+{% block title %}House{% endblock title %}
+{% block body %}
+
+<form class = "my-4" action="/dhousePatient">
+    <div class = "input-group mb-3">
+        <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+        <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Search</button>
+    </div>
+    {% block content %}
+    {% comment %} <br>
+   
+    <div class="row">
+        <div class="col-md">
+            <div class="card card0body">
+                <a  class ="btn btn-sm btn-info"href=""><h5>Online Appointment List</h5></a><br>
+                {% comment %} <a  class="btn btn-success"href="/HomePatientAppointment"><h5>Get New Appointment</h5></a> {% endcomment %}
+        
+           
+                    
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Appointment Date</th>
+                        <th>Appointed Doctor</th>
+                        <th>Contact</th>
+                     
+                  
+                    </tr>
+                     {% for vai in  new2 %}
+                   <tr>
+                        <td>{{vai.patient_id}}</td>
+                        <td>{{vai.ap_date}}</td>
+                        <td>{{vai.ap_doctor}}</td>
+                        <td>{{vai.Phone}}</td>
+                      
+                       {% comment %} <td><a class ="btn btn-sm btn-success"href="/aconfirm">Confirm</td>
+                        <td><a class ="btn btn-sm btn-danger" href="delete_appointment/{{ vai.id }}">Cancel</a></td>
+                        {% endcomment %}
+                      
+                           
+                       
+                    </tr> 
+                    {% endfor %} 
+                </table>
+            </div>
+            
+        </div>
+    </div>
+{% endblock content%}   
+<br><a class ="btn btn-sm btn-info" href="/doctor">Go back</a><br><nr>
+  
+</body>
+</html>
+{% endblock body %}

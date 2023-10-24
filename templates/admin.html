@@ -1,0 +1,62 @@
+{% extends 'abase.html' %}
+{% block title %}House{% endblock title %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logged in user</title>
+  <style>
+    .main_color {
+        background: red;
+        padding:20px 40px;
+        color: white;
+        font-size: 23px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    h1 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+
+  
+      body {
+        background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg'); 
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      </style>
+  {%block content%}
+  {% if user.is_authenticated and user.is_staff and user.is_superuser%}
+</head>
+<body>
+
+  <br>
+  
+
+    <h1><br><br>  WelCome {{ request.user}}</h1>
+    <h1><br><a class ="btn btn-lg btn-info" href="/indoorpatient">Manage Indoor Patient</a><br><nr>
+      <br><a class ="btn btn-lg btn-success" href="/housePatient"> Manage Home Patient</a><br><nr>
+        {% comment %} <br><a class ="btn btn-lg btn-info" href="/outdoorPatient">Outdoor Appointment List</a><br> {% endcomment %}
+       
+          <br><a class ="btn btn-lg btn-success" href="/Online_appointment"> Online Appointment List</a><br><br>
+            <a class ="btn btn-lg btn-info" href="/ipreport">Indoor Patient Report</a><br><nr>
+         
+            <br><a class ="btn btn-lg btn-info" href="/result">Manage All Patient</a><br><nr>
+          </h1>
+ 
+  {% comment %} <a href="/HomePatient">Get appointment</a> {% endcomment %}
+  
+</body>
+
+{%else%}
+<p class="main_color"> You dont have access to this portal</p>
+{% endif %}
+{%endblock content%}
+</html>
+{% endblock body %}
+

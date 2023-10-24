@@ -1,0 +1,514 @@
+{% extends 'base.html' %}
+{% block title %}aboutpage{% endblock title %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+
+<title>ICT HUB</title>  
+
+<meta name="keywords" content="Popular Diagnostic Centre Ltd." />
+<meta name="description" content="Popular Diagnostic Centre Ltd.">
+<meta name="author" content="roopokar.com">
+
+<!-- Favicon -->
+
+
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+<!-- Web Fonts  -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+<!-- Vendor CSS -->
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/animate/animate.min.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/simple-line-icons/css/simple-line-icons.min.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/owl.carousel/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/owl.carousel/assets/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/magnific-popup/magnific-popup.min.css">
+
+
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/css/theme.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/css/theme-elements.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/css/theme-blog.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/css/theme-shop.css">
+
+<!-- Current Page CSS -->
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/rs-plugin/css/settings.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/rs-plugin/css/layers.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/rs-plugin/css/navigation.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/vendor/circle-flip-slideshow/css/component.css">
+
+<!-- Demo CSS -->
+
+
+<!-- Skin CSS -->
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/css/skins/default.css"> 
+
+<!-- Theme Custom CSS -->
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/css/custom.css">
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/css/jquery-confirm.min.css">
+
+<!-- Head Libs -->
+<script src="https://www.populardiagnostic.com/public/porto/vendor/modernizr/modernizr.min.js"></script>
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/porto/datatables/dataTables.bootstrap4.css">
+
+<link rel="stylesheet" href="https://www.populardiagnostic.com/public/css/chosen.css">
+
+    <style>
+.flash-button{
+  background:#00984a;
+  padding:5px 10px;
+  color:#ffffff;
+  border:none;
+  border-radius:5px;
+  
+  animation-name: flash;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  //Firefox 1+
+  -webkit-animation-name: flash;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+
+  //Safari 3-4
+  -moz-animation-name: flash;
+  -moz-animation-duration: 1s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+}
+
+@keyframes  flash {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+//Firefox 1+
+@-webkit-keyframes flash {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+
+//Safari 3-4
+@-moz-keyframes flash {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1.0; }
+}
+</style>
+
+<style>
+@media  only screen and (max-width: 500px) {
+  
+  .smobile{
+      padding-top: 100px !Important;
+  }
+  .btnmobile{
+      margin-left: 0px !Important;
+  }
+  .servicemobile, .docmobile{
+      padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+  .knowmobile{
+      margin-top: 0px !important;
+  }
+  .footmobile{
+      border-top: 1px solid white !important;
+    padding-top: 15px !important;
+  }
+  .popdesc,.happytext,.advtext{
+      display: none !important;
+  }
+  .techslider{
+      margin-top: -60px !important;
+  }
+  .docdiv{
+      text-align: center;
+  }
+  .bestdiv{
+      line-height: 25px !important;
+      font-size: 20px !important;
+  }
+ 
+}
+    .testimonial{
+    background-color: white;
+    padding: 30px 0px;
+    margin-right: 10px;
+    }
+.boxbtn{      
+  padding: 30px !important;
+  height: 90px;
+  border-radius: 0px;
+  width: 100%;
+}
+html .btn-primary:active, html .btn-primary.active {
+    background-color: #0b9e53 !important;
+    }
+.doclist{
+  text-align: center; font-size: 12px; line-height: 18px;
+}
+html .scroll-to-top {
+margin-bottom:32px;
+margin-right: 80px;
+}
+#header .header-nav-features {
+    
+    padding-left: 0px;
+    margin-left: 0px;
+}    
+</style>
+
+<!--Start of Zendesk Chat Script-->
+<script type="text/javascript">
+/*window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+$.src="https://v2.zopim.com/?6SjAOBQbWWuvngibCZuJqsnkPwqOvHr1";z.t=+new Date;$.
+type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+*/</script>
+<!--End of Zendesk Chat Script-->
+</head>
+<body>
+
+<div class="body">
+	<style>
+    .fb_dialog{
+        right: 45pt !important;
+    }    
+</style>
+<style>
+.example1 {
+ height: 50px;	
+ overflow: hidden;
+ position: relative;
+}
+.example1 h3 {
+ font-size: 13px;
+ font-weight: 600;
+    color: #00984a;
+    position: relative;
+    width: max-content;
+    height: 100%;
+    margin: 0;
+ text-align: center;
+ line-height:45px;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: example1 50s linear infinite;
+ -webkit-animation: example1 50s linear infinite;
+ animation: example1 50s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes example1 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes  example1 {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%); 
+ }
+}
+.blink_text {
+
+    animation:1s blinker linear infinite;
+    -webkit-animation:1s blinker linear infinite;
+    -moz-animation:1s blinker linear infinite;
+    font-weight: bold;
+     color: red;
+     line-height: 20px;
+     text-align:center;
+     font-size:13px;
+     margin-right: 5px;
+    }
+.blink_text_blue {
+
+    animation:1s blinker linear infinite;
+    -webkit-animation:1s blinker linear infinite;
+    -moz-animation:1s blinker linear infinite;
+    font-weight: bold;
+     color: #006fba;
+     line-height: 20px;
+     text-align:center;
+     font-size:13px;
+     
+    }    
+
+    @-moz-keyframes blinker {  
+     0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+     }
+
+    @-webkit-keyframes blinker {  
+     0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+     }
+
+    @keyframes  blinker {  
+     0% { opacity: 1.0; }
+     50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+     }
+@media  only screen and (max-width: 600px) {
+  .blink_text {
+    line-height: 15px;
+    text-align: center;
+    padding-top: 5px;
+    margin-right: 5px;
+  }
+  .blink_text_blue {
+    line-height: 15px;
+    text-align: center;
+    padding-top: 5px;
+  }
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="196298460417225"
+  theme_color="#00984a">
+
+  }
+}
+</style>
+<div role="main" class="main">
+    <section class="page-header page-header-modern bg-color-light-scale-1 page-header-sm">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-md-8 order-2 order-md-1 align-self-center p-static">
+					<h1 class="text-dark">Our Services</strong></h1>
+				</div>
+			
+			</div>
+		</div>
+	</section>
+	<div class="container pb-1">
+
+		<div class="row pt-4">
+			<div class="col">
+				<div class="overflow-hidden mb-3">
+					<h2 class="font-weight-bold text-8 mb-0 appear-animation animated maskUp appear-animation-visible" data-appear-animation="maskUp" style="animation-delay: 100ms;">
+						We Are Here To Serve You
+					</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-10">
+				<div class="overflow-hidden">
+					<p class="lead mb-0 appear-animation animated maskUp appear-animation-visible" data-appear-animation="maskUp" data-appear-animation-delay="200" style="animation-delay: 200ms;">
+						We have more than 2000 services to offer you in our different branches at very resonable cost with quick support. To know the details about our service details and pricing, you can see our detail price list in just one click. 
+					</p>
+				</div>
+			</div>
+			
+		</div>
+
+				<div class="row">
+			<div class="col py-3">
+				<hr class="solid mt-5 mb-2" id="1&Imaging">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-2 col-lg-2 appear-animation animated fadeInRightShorter appear-animation-visible" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="900" style="text-align:center; animation-delay: 900ms;">
+					<div class="box-content">
+						<i class="fa fa-microscope fa-4x icon-featured icons text-color-light bg-color-primary"></i>
+						<h4 class="font-weight-bold">Imaging</h4>									
+					</div>							
+			</div>
+
+								<div class="col-md-5 col-lg-5 appear-animation animated fadeInRightShorter appear-animation-visible" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="900" style="animation-delay: 950ms;">
+					<ul class="list list-icons list-primary list-borders">
+																			<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('35')" style="cursor: pointer">Philips Inginia 3.0Tesla Digital MRI</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('36')" style="cursor: pointer">Philips Inginia 3.0Tesla Digital MRI</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('37')" style="cursor: pointer">GE Light Speed 500 slice VCT (CT Scanner)</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('38')" style="cursor: pointer">GE Prodigy Oracle-Bone Densitometer(BMD)</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('39')" style="cursor: pointer">SIEMENS Lithotripsy (ESWL)</a></li>
+							
+																					</ul>
+							</div>
+																								<div class="col-md-5 col-lg-5 appear-animation animated fadeInRightShorter appear-animation-visible" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="900" style="animation-delay: 950ms;">
+								<ul class="list list-icons list-primary list-borders">
+															
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('40')" style="cursor: pointer">Philips 12-Channel -ECG</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('41')" style="cursor: pointer">GE Marquette 12 Channel ECG(Computer Analyzed &amp; Interpreted)</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('42')" style="cursor: pointer">GE Marquette ETT(Tress ECG)</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('43')" style="cursor: pointer">GE 24 Hours Holter Monitor (Marquette)</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('44')" style="cursor: pointer">24 Hours Ambulatory BP</a></li>
+							
+																					</ul>
+							</div>
+															
+																						
+				
+		</div>
+			<div class="row">
+			<div class="col py-3">
+				<hr class="solid mt-5 mb-2" id="2&Pathology">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-2 col-lg-2 appear-animation animated fadeInRightShorter appear-animation-visible" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="900" style="text-align:center; animation-delay: 900ms;">
+					<div class="box-content">
+						<i class="fa fa-diagnoses fa-4x icon-featured icons text-color-light bg-color-primary"></i>
+						<h4 class="font-weight-bold">Pathology</h4>									
+					</div>							
+			</div>
+
+								<div class="col-md-5 col-lg-5 appear-animation animated fadeInRightShorter appear-animation-visible" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="900" style="animation-delay: 950ms;">
+					<ul class="list list-icons list-primary list-borders">
+																			<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('45')" style="cursor: pointer">( Biochemistry, Immunology, Serology, Microbiology, Clinical Pathology, Histopathology, Molecular Laboratory )</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('46')" style="cursor: pointer">Haematology –sysmex XN2000 :(Full Automated Reticulocyte Counter &amp; 5 parts Differential Analyzer)</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('47')" style="cursor: pointer">Cobas 6000 (Full Automated Multibatch Biochemistry &amp; Immunology Analyzer)</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('48')" style="cursor: pointer">BECKMAN Coulter Au 680 (Random Access Multibatch Chemistry Analyzer)</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('49')" style="cursor: pointer">Abbott-Architect i2000SR (Full Automated Random Access Immunology Analyzer)</a></li>
+							
+																					</ul>
+							</div>
+																								<div class="col-md-5 col-lg-5 appear-animation animated fadeInRightShorter appear-animation-visible" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="900" style="animation-delay: 950ms;">
+								<ul class="list list-icons list-primary list-borders">
+															
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('50')" style="cursor: pointer">Molecular (PCR) Lab. (HBV-DNA)(HPV-DNA)(HCV-RNA)HCV-RNA Genotype), HLA-B27.</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('51')" style="cursor: pointer">Microbiology</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('52')" style="cursor: pointer">Clinical Pathology</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('53')" style="cursor: pointer">Histopathology</a></li>
+							
+							
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('54')" style="cursor: pointer">Cytology</a></li>
+							
+																					</ul>
+							</div>
+																								<div class="col-md-5 col-lg-5 appear-animation animated fadeInRightShorter appear-animation-visible" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="900" style="animation-delay: 950ms;">
+								<ul class="list list-icons list-primary list-borders">
+															
+													<li><i class="fas fa-check"></i> <a onclick="ServiceDetails('55')" style="cursor: pointer">Cardiac MRI</a></li>
+							
+							
+																						</ul>
+					</div>
+										
+				
+		</div>
+			
+	
+	
+						
+							
+		
+				
+		<div class="col-md-5 col-lg-5 appear-animation animated fadeInRightShorter appear-animation-visible" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="900" style="animation-delay: 900ms;">
+			<p>
+            Patient Management has its own Medicine corner is a well-known retailer of medicine in Bangladesh. We provide all kinds of life saving medicine, which are available in all branches under Patient Management System. Our aim is to provide good medicine and best service quality to the patients.
+        </p>							
+		</div>
+			
+	</div>
+	
+</div>
+
+	<style>
+    #footer a:not(.btn) {
+        color: white;
+    }
+    .contact_us * {
+        color: white !important;
+    }
+</style>
+
+<footer id="footer" class="border-0" style="background: url('https://www.populardiagnostic.com/public/porto/img/footer-back.jpg'); background-size:cover; background-position: 0 100%; 
+    box-shadow: inset 0 0 0 215px rgba(0, 0, 0, 0.48);">
+	<div class="container">
+		<div class="row justify-content-md-center py-5 mt-3">
+			
+			<div class="col-md-4 col-lg-4 text-center text-lg-left mb-5 mb-lg-0">
+				<h5 class="text-5 text-transform-none font-weight-semibold text-color-light mb-4">Contact Us</h5>
+                <div class="contact_us">
+                    <p>House #16, Road # 2, Dhanmondi R/A, Dhaka-1205, Bangladesh<br />
+Phone : 09613 787801, 09666 787801<br />
+E-mail :&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4adaaa2ab84b4abb4b1a8a5b6a0ada5a3aaabb7b0ada7eaa7aba9">[email&#160;protected]</a></p>
+               
+			
+			
+		</div>
+	</div>
+</footer>
+</div>
+
+		<!-- Vendor -->
+
+<!-- Theme Base, Components and Settings -->
+
+
+	</body>
+</html>
+
+
+
+
+l{% endblock body %}
+
+
+

@@ -1,0 +1,103 @@
+{% extends 'Pbase.html' %}
+{% block title %}aboutpage{% endblock title %}
+{% block body %}
+
+<h1 {text-align: center;}></h1>
+<head>
+    <style>
+        .main_color{
+           position: center
+        }
+    h1 {text-align: center;}
+    h4 {text-align: center; }
+    h3 {text-align: center;}
+    h5{text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+    c{}
+    </style>
+</head>
+<body>
+    
+    <h1><br><br>Congratulatios!! <br></h1>
+       <p> Home Patient Admissin Vouchar<br><br></p>
+           
+<h3>
+           
+            
+            
+           
+            {% comment %} <br><b>Doctor:</b>{{ HomePatient.doctor }}
+            <br><b>Appointment Date:</b>{{ HomePatient.date }}
+            <br><b>Serial:</b>{{ HomePatient.id }} {% endcomment %}
+
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <!------ Include the above in your HEAD tag ---------->
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-14">
+                        <div class="card">
+                            <div class="card-body p-5">
+                                <div class="row p-1">
+                                    
+            
+                                    <div class="col-md-6 text-right"><h5>
+                                        <p class="font-weight-bold mb-1"> Patient Type:{{ HomePatient.patient_type }}</p>
+                                        <p class="text-muted">Patient ID :{{ HomePatient.patient_id }}</p>
+                                        <p class="text-muted"> National ID:{{ HomePatient.patient_national_ID }}</p>
+                                    </h5>
+                                    </div>
+                                </div>
+            
+                                <hr class="my-5">
+            
+                                <div class="row pb-5 p-1">
+                                    <div class="col-md-6">
+                                        <h5> Thank You Sir , We received your information. <br>
+                    
+                                         <br><b>Your Name:</b>{{ HomePatient.patient_name }}<br>
+                                         <br><b>Your Contact:</b>{{ HomePatient.patient_phone }}  
+                                         <br><b>Registration Date:</b>{{ HomePatient.patient_date }}
+                                         <br><b>Your Age:</b>{{ HomePatient.patient_age }}
+                                         <br><b>Your Gender:</b>{{ HomePatient.patient_gender }}
+                                         <br><b>Your Mail:</b>{{ HomePatient.patient_email }}
+                                         <br><b>Your Address:</b>{{ HomePatient.patient_address }}
+                                         
+                                         <br><b>Emergerncy Person: </b>{{ HomePatient.patient_emergency_name }}
+                                         <br><b>Emergerncy Contact: </b>{{ HomePatient.patient_emergency_contact }}
+                                         
+
+                                       
+                                       
+                                    </div>
+            
+                                   
+                                </div>
+                               
+                               
+            
+                                <div class="d-flex flex-row-reverse bg-dark text-white p-2">
+                                    <button onclick="window.print()">Print</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://totoprayogo.com">totoprayogo.com</a></div>
+            
+            </div>
+            
+            
+            
+           
+            
+</body>
+
+
+{% endblock body %}
+
+

@@ -1,0 +1,136 @@
+
+
+{% extends 'pbase.html' %}
+{% block title %}HomePatient{% endblock title %}
+{% block body %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+
+
+    
+
+
+
+        
+     
+    <div class="container-fluid">
+
+
+                <div class="row">
+                    <!-- Widget Item -->
+                    <div class="col-md-12">
+                        <div class="widget-area-2 proclinic-box-shadow">
+                                                 
+                            <form action="" class="form-horizontal form-material mb-0" id="patient_form" method="post" enctype="multipart/form-data">
+                            <div class="form-group row"> 
+                              
+                              
+
+                                 
+                                   
+                                       <div class="col-md-12" style="background-color: #f9f5f5;padding: 20px;border-radius: 10px;">
+                                            <div class="container-fluid">
+
+                                                <div class="row">
+                                                    <!-- Widget Item -->
+                                                    <div class="col-md-12">
+                                                        <div class="widget-area-2 proclinic-box-shadow">
+                                                             <h3 class="widget-title">Add new Report or Prescription</h3>
+                                                           
+                                                                <div class="form-row">
+                                                                    <input type="hidden" name="token" value="7eed57dced1b16ad3ee2bef71138c27f92553b69">
+                                                                    <input type="hidden" name="request_user_id" value="1">
+                                                                    <input type="hidden" name="content" value="outdoor_service">                               
+                                                                 
+                                                                </div>
+                                                                <div class="form-group col-md-2">
+                                                                    <label for="patient_id"> Patient Id<i class="text-danger"> * </i></label>
+                                                                    <input type="text" class="form-control" placeholder=" Blood Pressure" id="patient_id" name="patient_id"  value= "{{HomePatient.patient_id }}" readonly required >
+                                                                </div>
+                                
+                                                                <div class="form-group col-md-2">
+                                                                    <label for="r_name"> Report Name<i class="text-danger"> * </i></label>
+                                                                    <input type="text" class="form-control" placeholder=" Blood Pressure" id="r_name" name="r_name" required>
+                                                                </div>
+                                                                <div class="form-group col-md-2">
+                                                                    <label for="r_type">Report Type<i class="text-danger"> * </i></label>
+                                                                    <select id="r_type" class="form-control " name="r_type" placeholder="Report/ Prescription" >
+                                                                        <option value="">Select Report/ Prescription"</option>
+                                                                        <option value="report">Report</option>
+                                                                        <option value="Prescription">Prescription</option>
+                                                                      
+                                                                    </select>
+                                                                   
+                                                                </div>
+                                                             
+                                                                     <div>
+                                                                        <label for="report_file">Report(image/Pdf)<i class="text-danger"> * </i></label>
+                                                                        <input type="file" class="form-control" placeholder="report_file" id="report_file" name="report_file" >
+                                                                    </div> 
+                                                                    
+                                                                        <label for="exampleFormControlTextarea1">Report Description</label>
+                                                                        <textarea placeholder="Description" class="form-control" id="report_description" name="report_description" rows="3"></textarea>
+                                                                    </div><br> 
+                                                                   
+                                                                      
+                                                                    
+                                                                   
+                                                                </div>
+                                                                   
+                                                            </div>
+                                                        
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        <div>  
+                                    </div>
+                                </div>
+                                        
+                                    
+
+
+                                    <div class="form-group col-md-6 mb-3">
+                                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+
+
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                            <div id="loader"></div>
+                        </div>
+                    </div>
+                    <!-- /Widget Item -->
+                </div>
+              
+            
+           
+
+            
+</html>
+
+
+ 
+
+  
+
+
+{% endblock body %}
+
+
+

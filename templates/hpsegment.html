@@ -1,0 +1,41 @@
+
+    {% extends 'pbase.html' %} 
+{% comment %} {% block title %}House{% endblock title %} {% endcomment %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logged in user</title>
+  <style>
+    h1 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+
+  
+      body {
+        background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg');
+      }
+      </style>
+  
+</head>
+<body>
+
+  <br>
+  
+
+    <h1><br><br>  WellCome {{ request.user}}</h1>
+    <h1><br><a class ="btn btn-sm btn-info" href="/Online_appointment">Take new Appointment</a><br><nr>
+      <br><a class ="btn btn-sm btn-success" href="/report"> Report</a><br><nr>
+        
+      
+  
+ 
+  {% comment %} <a href="/HomePatient">Get appointment</a> {% endcomment %}
+  
+</body>
+</html>
+{% endblock body %}
+

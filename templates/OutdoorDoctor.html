@@ -1,0 +1,480 @@
+{% extends 'pbase.html' %}
+{% block title %}Homepatient{% endblock title %}
+{% block body %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ICT HUB</title>  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="PDCL APP :: PDCL" />
+  <meta content="PDCL APP :: PDCL" name="author" />
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css">
+  
+  
+  
+ 
+ 
+
+ 
+  <style>
+    body{
+        background-image: url("https://cdn.systematic.com/media/g0sj1tbg/hospital-building-001-global.jpg?mode=crop&width=1200&height=630&center=");
+        background-color: #cccccc;
+     background-position: right;
+     background-repeat: no-repeat;
+    }
+    span{
+        font-size:15px;
+    }
+    a{
+      text-decoration:none; 
+      color: #0062cc;
+    }
+    .row{
+       margin-top: 25px;
+    }
+    .required{
+        color: red;
+    }
+    .box-part{
+        background-image: url("https://cdn.systematic.com/media/g0sj1tbg/hospital-building-001-global.jpg?mode=crop&width=1200&height=630&center=");
+        background-color: #cccccc;
+        border-radius:0;
+        padding:100px 10px;
+        margin:30px 0px;
+    }.box-part1{
+        background:#00984a;
+        border-radius:0;
+        padding:100px 10px;
+        margin:30px 0px;
+    }
+    .btn-success {
+        background-image: url("paper.gif");
+ background-color: #cccccc;
+    }
+    .text{
+        margin:20px 0px;
+    }
+
+    .fa-style{
+      color:#4183D7 !important;
+      transform: scale(3.5,3.5);
+      margin-bottom: 15px
+    }
+
+    .text-white{
+      color: white !important;
+    }
+    .bg-success {
+    background-color: #00984a;
+}
+    .select2-container{
+      width: 100% !important
+    }
+                  input.hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+    #profile-image1 {
+    cursor: pointer;
+     width: 100px;
+    height: 100px;
+  border:2px solid #03b1ce ;}
+  .tital{ font-size:16px; font-weight:500;}
+   .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}  
+
+   li.active{
+    font-weight: bold
+   }
+   
+   .dataTables_wrapper{
+       margin-bottom: 10px;
+   }
+   
+   .dataTables_filter{
+       margin-bottom: 10px;
+   }
+    .table thead {
+        background: #00984a;
+        color:white;
+    }
+    table.dataTable thead {
+        background: #00984a;
+        color:white;
+    }
+    table.dataTable thead .sorting{
+        background-image: none !important;
+    }
+    table.dataTable thead .sorting_asc{
+        background-image: none !important;
+    }
+    table.dataTable thead .sorting_desc{
+        background-image: none !important;
+    }
+
+    .dataTable th{
+       white-space: nowrap !important;
+    }
+    .dataTable td{
+       white-space: nowrap !important;
+    }
+          
+    @media  print {
+     .hidden-print{
+         display: none !important;
+         
+     }
+    }
+    h3.headermy{
+        border-radius:5px; margin:0px !important; margin-top:10px !important;}
+        .shadowed:hover{-webkit-box-shadow: 0px 7px 16px -1px rgba(0,0,0,0.37);
+        -moz-box-shadow: 0px 7px 16px -1px rgba(0,0,0,0.37);
+        box-shadow: 0px 7px 16px -1px rgba(0,0,0,0.37);
+        position: relative;
+        top:-10px;
+    }
+
+    .terms-and-conditions h4{
+      margin-top: 35px
+    }
+    .terms-and-conditions h5{
+      margin-top: 25px
+    }
+    .terms-and-conditions p{
+      padding: 10px 0px 10px 0px
+    }
+
+    
+  </style>
+  <script type="text/javascript">
+    var base_url="https://populardiagnostic.com/booking";
+    var csrf_token='aU59sP5EQ4M3WzRXpN4HOqiAglRGlSbBk6Zzv15R';
+  </script>
+</head>
+<body style="opacity: 0px !important,  background-image:url('/static/img/0.jpg')">
+
+<nav class="navbar navbar-default"> 
+  <div class="container-fluid">
+    <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+      
+    </div>
+  
+<div class="container-fluid">
+  <div class="modal fade" id="terms_and_Conditions" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><h3><strong>Terms & Conditions</strong></h3></h5>
+        </div>
+        <div class="modal-body terms-and-conditions">
+          <h4 style="margin-top: 5px !important"><strong>SECTION 1 - WHAT DO WE DO WITH YOUR INFORMATION?</strong></h4>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="alert bg-danger text-danger" id="msg" style="display: none;">
+   
+</div>  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+body{
+     background-image: url(public/bgimage/bg01.png);
+     background-size: 50%;
+     background-position:top right;
+}
+</style>
+
+
+<form action="" method="post" id="appointment-form" style="border:none !important">
+  {% csrf_token %}
+    <input type="hidden" name="_token" value="aU59sP5EQ4M3WzRXpN4HOqiAglRGlSbBk6Zzv15R">    <div class="col-md-8 col-md-offset-3 col-sm-12 col-lg-6 col-lg-offset-3" style="margin-bottom: 50px">
+        <div class="row">
+            <center>
+                <h3 style="margin-bottom: 20px !important;margin-right: -15px;margin-left: -15px;padding:15px;" class="bg-primary headermy"><b>Doctor Appointment</b></h3>
+            </center>
+
+            <div class="form-group has-feedback">
+                
+                 
+                 
+            </div>
+            <script type="text/javascript">
+              $(function(){
+                  var dtToday = new Date();
+               
+                  var month = dtToday.getMonth() + 1;
+                  var day = dtToday.getDate()+2;
+                  var year = dtToday.getFullYear();
+                  if(month < 10)
+                      month = '0' + month.toString();
+                  if(day < 10)
+                   day = '0' + day.toString();
+                  var maxDate = year + '-' + month + '-' + day;
+                  $('#date').attr('min', maxDate);
+              });
+              </script>
+              <script type="text/javascript">
+                $(function(){
+                    var dtToday = new Date();
+                 
+                    var month = dtToday.getMonth() + 1;
+                    var day = dtToday.getDate()+2;
+                    var year = dtToday.getFullYear();
+                    if(month < 10)
+                        month = '0' + month.toString();
+                    if(day < 10)
+                     day = '0' + day.toString();
+                    var maxDate = year + '-' + month + '-' + day;
+                    $('#date').attr('max', maxDate);
+                });
+                </script>
+              
+              
+            <hr>
+            
+            <div class="col-md-6">
+                <label for="date"><strong>Appointment Date </strong></label>
+                <input type="date" value="0" class="form-control" id="date" name="date" value="{{OutdoorDoctor.date}}">
+              </div>
+            
+            <input type="hidden" name="type_id" value="1">
+            
+            <div class="form-group row">
+              <div class="col-md-6">
+                    <label for="branch_id"><strong>Branch</strong></label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select name="branch" id="branch_id" class="form-control chosen">
+                            <option value="0">Branch</option>
+                                                                                                <option value="1" >Dhanmondi</option>
+                                                                  <option value="5" >Narayangonj</option>
+                                                                  <option value="6" >Savar</option>
+                                                                  <option value="7" >Uttara</option>
+                                                                  <option value="10" >Mirpur</option>
+                                                                  <option value="18" >Badda</option>
+                                                                                      </select>
+                    </div>
+                </div> 
+                
+                </div>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="doctor_id">Doctor</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    
+                            <select id="doctor_id" class="form-control indoor_patient_doctor_doctor_id" name="doctor" placeholder="Pick a Service..." onchange="changeDataDoctor(this);" >
+                                <option value="">Select a Doctor...(Everyday : 6:00pm to 10.30pm)</option>
+                                <option value="Assoc.Prof.Dr.Johurul Hoque">Assoc.Prof.Dr.Johurul Hoque</option><option value="Dr.Muhammad Saker">Dr.Muhammad Saker</option><option value="Dr.Kazi Sazzad Hossain">Dr.Kazi Sazzad Hossain</option><option value="Dr.Marufur Rahman Talha">Dr.Marufur Rahman Talha</option><option value="Towhidul Islam">Towhidul Islam</option><option value="Mst.Kajal REkha">Mst.Kajal REkha</option><option value="Mst.Kajal Rekha">Mst.Kajal Rekha</option>                                                    </select>
+                      </div>
+               </div>
+             {% comment %} <div class="form-group">
+                <label for="slot">Slot</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                    
+                            <select id="slot" class="form-control slot" name="slot" placeholder="Pick a Service..." onchange="changeDataDoctor(this);" >
+                                <option value="">Select a slot...</option>
+                                <option value="Day(2:00pm - 5:00pm)">Day(2:00pm - 5:00pm)</option><option value=" Evening(6:30pm - 11:30pm)"> Evening(6:30pm - 11:30pm)</option>                                                </select>
+                      
+                      </div>
+               </div> {% endcomment %}
+           
+
+            
+            
+
+            {% comment %} <div class="input-group">
+                <div class="input-group">
+                  <label for="slot"><strong>Slot</strong></label>
+                  <select class="form-control chosen" id="slot" name="slot" >
+                      <option value="" ></option>
+                      <option value="" >Day Time(2:00pm - 5:00pm)</option>
+                      <option value="2" > Evening(6:30pm - 11:30pm)</option>
+                       
+                   </select>
+                </div>
+            </div> {% endcomment %}
+
+            <input type="hidden" name="payment_mode" value="1" />
+            
+                    <input type="hidden" name="patient_type" id="patient_type" value="0">
+              <div class="row">
+                <div class="col-md-12">
+     
+                        <div class="tab-content  bg-white">
+                            <div id="new" class="tab-pane fade in active">
+                                <div class="form-group row">
+                                  <div class="col-md-4">
+                                    <label for="name"><strong>Name&nbsp;&nbsp;<span class="text-danger">*</span></strong></label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{OutdoorDoctor.name}}">
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="phone"><strong>Phone &nbsp;&nbsp;<span class="text-danger">*</span></strong></label>
+                                    <input type="text" class="form-control" id="new_phone" name="phone" value="{{OutdoorDoctor.phone}}" placeholder="01XXXXXXXXX">
+                                  </div>
+                                  <div class="col-md-2">
+                                    <label for="age"><strong>Age</strong></label>
+                                    <input type="number" value="0" min="0" max="100" class="form-control" id="age" name="age" value="{{OutdoorDoctor.age}}">
+                                  </div>
+                                
+
+
+
+                              
+
+                                   <div class="col-md-2">
+                                     <label for="gender"><strong>Gender</strong></label>
+                                     <select class="form-control chosen" id="patient_gender" name="gender" >
+                                         <option value="male" >Male</option>
+                                         <option value="2" >Female</option>
+                                          <option value="3" >Others</option>
+                                      </select>
+                                     </div>
+                              </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            
+
+                <div class="form-group row">
+                  <div class="col-md-12">
+                      <label style="cursor: pointer;">
+                          <input type="checkbox" name="agree" id="agree" value="1" style="transform: scale(1.5,1.5);cursor: pointer;" >&nbsp;&nbsp;&nbsp;I agree to the <a data-toggle="modal" data-target="#terms_and_Conditions" style="cursor: pointer;">Terms and Conditions</a>
+                      </label>
+                  </div>
+              </div>
+  
+              <div class="row mt-5">
+                  <div class="col-md-7 col-md-offset-3">
+                      <button type="submit" class="btn btn-primary btn-block" id="appointment_submit_btn" disabled><span class="glyphicon glyphicon-send"></span>&nbsp;Confirm Appointment</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>
+
+  
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      checkAgreed();
+
+      $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+          $('#patient_type').val($(e.target).attr("data-patient-type"));
+      });
+
+      $("#agree").change(function() {
+          checkAgreed();
+      });
+
+      getSpecialist();
+  });
+
+  function getSpecialist() {
+      var branch_id=$('#branch_id').val();
+      $.ajax({
+          url: base_url+"/get-specialist/"+branch_id,
+          method: "GET",
+          data: {},
+      })
+      .done(function(response) {
+          var specialist_id = "";
+          var data='<option value="0">Choose Specialist</option>';
+          $.each(response, function(index, val) {
+              var selected = '';
+              if(val.id == specialist_id){
+                  selected = 'selected';
+              }
+              data+='<option value="'+(val.id)+'" '+(selected)+'>'+(val.specialist_name)+'</option>';
+          });
+
+          $('#specialist_id').html(data);
+          getDoctor();
+      });
+  }
+
+  function getDoctor() {
+      var doctor_id = "";
+      var data='<option value="0">Choose a Doctor</option>';
+
+      var branch_id=$('#branch_id').val();
+      var specialist_id=$('#specialist_id').val();
+      var date=$('#appointment_date').val();
+
+      if(parseInt(branch_id) > 0 && parseInt(specialist_id) > 0){
+          $.ajax({
+            url: base_url+"/get-doctors/"+branch_id+"/"+specialist_id+"/"+date,
+            method: "GET",
+            data: {},
+          })
+          .done(function(response) {
+            
+            $.each(response, function(index, val) {
+                  var selected = '';
+                  if(val.id == doctor_id){
+                      selected = 'selected';
+                  }
+
+                  data+='<option value="'+(val.id)+'" '+(selected)+'>'+(val.name)+'</option>';
+            });
+
+            $('#doctor_id').html(data).change();
+          });
+      }else{
+          $('#doctor_id').html(data).change();
+      }  
+  }
+
+  function getDoctorDetails(){
+      $('#doctor_details').html('').hide();
+      var doctor_id=$('#doctor_id').val();
+      if(parseInt(doctor_id) > 0){
+          $.ajax({
+              url: base_url+"/get-doctor-details/"+doctor_id,
+              method: "GET",
+              data: {},
+          })
+          .done(function(response) {
+             $('#doctor_details').html(response).show(); 
+          });
+      }
+  }  
+
+  function checkAgreed() {
+      if($("#agree").is(":checked")) {
+          $('#appointment_submit_btn').prop('disabled',false);
+      }else{
+          $('#appointment_submit_btn').prop('disabled',true);
+      }
+  }
+</script>
+</div>
+
+<script>
+</script>
+</body>
+</html>
+ 
+                  
+{% endblock body %}

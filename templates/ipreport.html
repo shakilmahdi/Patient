@@ -1,0 +1,107 @@
+{% extends 'pbase.html' %}
+{% block title %}House{% endblock title %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report</title>
+  <style>
+    .my_bg h1 {
+        color: #ffffff;
+      }
+      .my_bg {
+          background-image: url('https://images.hindustantimes.com/img/2022/06/30/1600x900/6b242762-f891-11ec-8608-e101559032f3_1656606499620.jpg');
+          background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+      height:100vh;
+      z-index: 1;
+        }
+        .my_bg::before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          content: "";
+          background: black;
+          opacity: .5;
+          z-index: -1;
+      }
+  </style>
+</head>
+<body>
+<div class="my_bg">  
+
+    <br>
+    {% comment %} WellCome {{ request.user}}<br> {% endcomment %}
+    {% comment %} <br><a class ="btn btn-sm btn-danger" href="/logout">logout</a><br> {% endcomment %}
+    <br>
+    {% block content %}
+    <form class = "my-4" action="/ipreport">
+        <div class = "input-group mb-3">
+            <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+            <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Search</button>
+        </div>
+    <div class="row">
+        <div class="col-md">
+            <div class="card card0body">
+                <a  class ="btn btn-sm btn-info"href=""><h5>Your Reports</h5></a><br>
+               
+            </div>
+          
+                    
+            <div class="card card-body">
+               
+                
+                <table class="table">
+                    <tr>
+
+                        <th>N/A</th>
+                        <th> Patient ID</th>
+                        <th> Report Name</th>
+                        <th>Report Category</th>
+                        
+                        <th>Report
+                  
+                    </tr>
+                    {% for vai in  ShowIndoorReport %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{vai.indoor_treatment_patient_id}}</td>
+                        <td>{{vai.r_name}}</td>
+                        <td>{{vai.r_type}}</td>
+                        
+                     
+                        <td>
+                            <a href="{{vai.report_file.url}}" download>{{vai.report_file}}</a>
+                           </td> 
+                      
+                           
+                    
+                    </tr>
+                    
+                    {% endfor %}
+                    
+                </table>
+            </div>
+            {% comment %} <div class="card card0body">
+           
+                <a  class="btn btn-success"href="/addreport"><h5>Add new Report or Prescription</h5></a> 
+               
+            </div> {% endcomment %}
+           
+        </div>
+    </div>
+    
+{% endblock content%}   
+<br><a class ="btn btn-sm btn-info" href="/housePatient">Go back</a><br><nr>
+    <div id="pdf-viewer"></div>
+    
+</body>
+</html>
+{% endblock body %}

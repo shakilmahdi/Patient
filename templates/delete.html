@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}services{% endblock title %}
+{% block body %}
+<p> Are you sure  you want to delete this ??<p>
+<form  action ="{%  url 'delete_contact' a.idmethod ="POST">
+
+
+
+    {% comment %} <a href ="{% url '/result' %}"> Cancel</a> {% endcomment %}
+
+    <input type="submit" name=" Confirm">
+
+
+
+
+
+</form>
+
+
+
+{% endblock body %}

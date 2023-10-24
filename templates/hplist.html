@@ -1,0 +1,77 @@
+{% extends 'dbase.html' %}
+{% block title %}result{% endblock title %}
+{% block body %}
+
+<br>
+    WellCome to Home Patient Module<br>
+  
+    {% block content %}
+    <br>
+ 
+    
+    <div class="row">
+    {% comment %} <form class = "my-4" action="/hplist">    
+        <div class = "input-group mb-3">
+            <input type="text" name="q" calss= "form-control form-control-1g" placeholder="Search"/>
+            <button class ="btn btn-dark btn-1g" type="submit" id="button-addon2">Search</button>
+        </div> {% endcomment %}
+        <div class="col-md">
+         
+            <div class="card card-body">
+               
+                
+                <table class="table">
+                    <tr>
+
+                        <th>N/A</th>
+                        <th> Patient ID</th>
+                        <th>Patient(Name)</th>
+                        <th>Contact</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Blood Group</th>
+                       
+                        <th>Register Date</th>
+                       
+                  
+                    </tr>
+                    {% for vai in  HomePatient %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{vai.patient_id}}</td>
+                        <td>{{vai.patient_name}}</td>
+                        <td>{{vai.patient_phone}}</td>
+                        <td>{{vai.patient_gender}}</td>
+                        <td>{{vai.patient_age}}</td>
+                        <td>{{vai.patient_blood_group}}</td>
+                        
+                        <td>{{vai.patient_date}}</td>
+                       
+                        {% comment %} <td>
+                            <a href="/vai.report_file" download>{{vai.report_file}}</a>
+                           </td> {% endcomment %}
+                           <th> <a class ="btn btn-sm btn-success" href="Online_appointment">Appointment</th>
+                            <th><a class ="btn btn-sm btn-info"href="/report">Report</th>
+                    </tr>
+                    
+                    {% endfor %}
+                    
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</form>
+
+
+
+  
+<br><a class ="btn btn-sm btn-info" href="/doctor">Go back</a><br><nr>
+    <br><a class ="btn btn-sm btn-danger" href="/logout">logout</a><br>
+    <br>
+{% endblock content%}                     
+
+
+
+
+{% endblock body %}
